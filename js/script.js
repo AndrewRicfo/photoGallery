@@ -25,7 +25,7 @@ y = w.innerHeight;
 
 $(document).scroll(function() {
 
-	if($(window).scrollTop() > y){
+	if($(window).scrollTop() > y-50){
 
 		$('.nav').css("background-color", "rgba(0,0,0,0.6")
 		$('.nav').css("padding-top", "0")
@@ -48,19 +48,19 @@ $(document).on('click', 'a', function(event){
 
 $(window).scroll(function() {
 
-   
-    if ($(this).scrollTop() >= $('#home').offset().top - 5) {
-        $('.nav a').removeClass('active');
-        $('.nav a:eq(0)').addClass('active');
-    }
-    if ($(this).scrollTop() >= $('#gallery').offset().top - 5) {
-        $('.nav a').removeClass('active');
-        $('.nav a:eq(1)').addClass('active');
-    }
-    if ($(this).scrollTop() >= $('#contacts').offset().top - 5) {
-        $('.nav a').removeClass('active');
-        $('.nav a:eq(2)').addClass('active');
-    }
+
+	if ($(this).scrollTop() >= $('#home').offset().top - 50) {
+		$('.nav a').removeClass('active');
+		$('.nav a:eq(0)').addClass('active');
+	}
+	if ($(this).scrollTop() >= $('#gallery').offset().top - 100) {
+		$('.nav a').removeClass('active');
+		$('.nav a:eq(1)').addClass('active');
+	}
+	if ($(this).scrollTop() >= $('#contacts').offset().top - 50) {
+		$('.nav a').removeClass('active');
+		$('.nav a:eq(2)').addClass('active');
+	}
 });
 
 
@@ -131,12 +131,14 @@ $(document).scroll(function() {
 // gallery 
 
 var n = document.getElementsByClassName('container').length
+var modalImg = document.getElementsByClassName("modal-content")[0];
+var span = document.getElementsByClassName("close")[0];
+var modal = document.getElementsByClassName('modal')[0];
+
 for(var i=0; i<n; i++){
 
-	var modal = document.getElementsByClassName('modal')[i];
 	var img = document.getElementsByClassName('image')[i];
-	var modalImg = document.getElementsByClassName("modal-content")[i];
-	var span = document.getElementsByClassName("close")[i];
+
 
 	img.onclick = function(){
 		modal.style.display = "block";
@@ -148,13 +150,13 @@ for(var i=0; i<n; i++){
 	modalImg.onclick = function() { 
 		modal.style.display = "none";
 		$('body').css("overflow", "auto")
-		$('.nav').css("display", "flex")
+		$('.nav').css("display", "block")
 	}
 
 	span.onclick = function() { 
 		modal.style.display = "none";
 		$('body').css("overflow", "auto")
-		$('.nav').css("display", "flex")
+		$('.nav').css("display", "block")
 
 	}
 }
@@ -171,14 +173,11 @@ $('.fa').click(function(e){
 });
 
 
-function changeModal(){
+(function changeModal(){
 	var i;
 
-	for(var i=0; i<n; i++){
-
-		var l = document.getElementsByClassName("modal-left")[i];
-		var r = document.getElementsByClassName("modal-right")[i];
-		var modalImg = document.getElementsByClassName("modal-content")[i];
+		var l = document.getElementsByClassName("modal-left")[0];
+		var r = document.getElementsByClassName("modal-right")[0];
 
 		l.onclick = function(){
 			var src = modalImg.src.split("/")
@@ -193,6 +192,7 @@ function changeModal(){
 
 		r.onclick = function(){
 			var src = modalImg.src.split("/")
+			console.log(src)
 			var imageNumber = parseInt(src[9].split(".")[0])
 			imageNumber+=1
 			if(imageNumber==n+1)
@@ -202,9 +202,28 @@ function changeModal(){
 			modalImg.src = newSrc	
 		}
 
-	}
-}
-changeModal()
+	
+})();
+
 // end of gallery
 
 
+//ajax call for .json file at github
+
+var obji = $.ajax({
+	url: 'https://rawgit.com/AndrewRicfo/photoGallery/master/js/jason.json',
+	data: {},
+	type: 'GET',
+	crossDomain: true,
+	dataType: 'json',
+	context: document.body,
+	global: false,
+	async:false,
+	success: function(result) {
+		return result;
+	},
+	error: function() { alert('Failed to get .json content!'); },
+}).responseText;
+
+obji = $.parseJSON(obji)
+console.log(obji[0])
