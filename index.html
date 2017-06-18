@@ -8,34 +8,83 @@
 	<meta name=”viewport” content=”width=device-width,initial-scale=1.0″>
 </head>
 <body>
-	<div id="firstScreen">
+
+	<div class="nav">
+		<div class="nav-invisible"></div>
+		<div class="nav-invisible"></div>
+		<div class="nav-center">
+			<div class="nav-item" id="asd"><a class="active" href="#home">HOME</a></div>
+			<div class="nav-divide"></div>
+			<div class="nav-item"><a href="#gallery">GALLERY</a></div>
+			<div class="nav-divide"></div>
+			<div class="nav-item"><a href="#contacts">CONTACTS</a></div>
+		</div>
 
 
+		<div class="nav-right">
+			<div class="nav-item register"><a href="#">Register</a></div>
+			<div class="nav-item login"><a href="#">Log in</a></div>
+		</div>
+	</div>
+
+	<div class="slider" id="home">
+		<div class="first-screen-text">Andrew's photogallery</div>
+		<a href="#gallery"><div class="display-down bounce">
+			<i class="fa fa-angle-down" aria-hidden="true"></i>
+		</div></a>
+		<img class="mySlides fade" src="images/sl-5.jpg">
+		<img class="mySlides fade" src="images/sl-3.jpg">
+		<img class="mySlides fade" src="images/sl-2.jpg">
+		<img class="mySlides fade" src="images/sl-1.jpg">
+		<img class="mySlides fade" src="images/sl-6.jpg">
+		<img class="mySlides fade" src="images/sl-4.jpg">
+
+		<button class="button display-left" onclick="plusSlide(-1)"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+		<button class="button display-right" onclick="plusSlide(+1)"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+	</div>
+
+
+
+	<div id="gallery">
 		<div class="container">
-			<img src="images/12.jpg" alt="first image" class="image">
+			<img src="images/9.jpg" alt="first image" class="image">
 			<div class="overlay">
 				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
-				<div class="overlay-description">Photo description</div>
+				<div class="overlay-description">Photo descriptionasdasdasda sdasdasdasdasdasd</div>
 			</div>
 			<div class="modal">
+				<button class="button display-left modal-left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+				<button class="button display-right modal-right"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
 				<span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
-				<img class="modal-content">
-				<div class="caption"></div>
-
+				<img class="modal-content" >
 			</div>
 		</div>
 		
 		<div class="container">
-			<img src="images/4.jpg" alt="asdasd" class="image">
+			<img src="images/3.jpg" alt="asdasd" class="image">
 			<div class="overlay">
 				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
 				<div class="overlay-description">Photo description</div>
 			</div>
 			<div class="modal">
+				<button class="button display-left modal-left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+				<button class="button display-right modal-right"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
 				<span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
 				<img class="modal-content">
-				<div class="caption"></div>
+			</div>
+		</div>
 
+		<div class="container">
+			<img src="images/4.jpg" alt="Photo description. Watch me whip, nigga" class="image">
+			<div class="overlay">
+				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
+				<div class="overlay-description">Photo description</div>
+			</div>
+			<div class="modal">
+				<button class="button display-left modal-left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+				<button class="button display-right modal-right"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+				<span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
+				<img class="modal-content">
 			</div>
 		</div>
 
@@ -46,10 +95,10 @@
 				<div class="overlay-description">Photo description</div>
 			</div>
 			<div class="modal">
+				<button class="button display-left modal-left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+				<button class="button display-right modal-right"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
 				<span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
 				<img class="modal-content">
-				<div class="caption"></div>
-
 			</div>
 		</div>
 
@@ -60,10 +109,52 @@
 				<div class="overlay-description">Photo description</div>
 			</div>
 			<div class="modal">
+				<button class="button display-left modal-left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+				<button class="button display-right modal-right"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
 				<span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
 				<img class="modal-content">
-				<div class="caption"></div>
+			</div>
+		</div>
+		
+		<div class="container">
+			<img src="images/2.jpg" alt="Photo description. Watch me whip, nigga" class="image">
+			<div class="overlay">
+				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
+				<div class="overlay-description">Photo description</div>
+			</div>
+			<div class="modal">
+				<button class="button display-left modal-left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+				<button class="button display-right modal-right"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+				<span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
+				<img class="modal-content">		
+			</div>
+		</div>
+		
+		<div class="container">
+			<img src="images/1.jpg" alt="Photo description. Watch me whip, nigga" class="image">
+			<div class="overlay">
+				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
+				<div class="overlay-description">Photo description</div>
+			</div>
+			<div class="modal">
+				<button class="button display-left modal-left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+				<button class="button display-right modal-right"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+				<span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
+				<img class="modal-content">
+			</div>
+		</div>
 
+		<div class="container">
+			<img src="images/7.jpg" alt="Photo description. Watch me whip, nigga" class="image">
+			<div class="overlay">
+				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
+				<div class="overlay-description">Photo description</div>
+			</div>
+			<div class="modal">
+				<button class="button display-left modal-left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+				<button class="button display-right modal-right"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+				<span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
+				<img class="modal-content">
 			</div>
 		</div>
 
@@ -74,27 +165,12 @@
 				<div class="overlay-description">Photo description</div>
 			</div>
 			<div class="modal">
+				<button class="button display-left modal-left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+				<button class="button display-right modal-right"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
 				<span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
 				<img class="modal-content">
-				<div class="caption"></div>
-
 			</div>
 		</div>
-		
-		<div class="container">
-			<img src="images/3.jpg" alt="Photo description. Watch me whip, nigga" class="image">
-			<div class="overlay">
-				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
-				<div class="overlay-description">Photo description</div>
-			</div>
-			<div class="modal">
-				<span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
-				<img class="modal-content">
-				<div class="caption"></div>
-
-			</div>
-		</div>
-		
 		<div class="container">
 			<img src="images/10.jpg" alt="Photo description. Watch me whip, nigga" class="image">
 			<div class="overlay">
@@ -102,55 +178,14 @@
 				<div class="overlay-description">Photo description</div>
 			</div>
 			<div class="modal">
+				<button class="button display-left modal-left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+				<button class="button display-right modal-right"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
 				<span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
 				<img class="modal-content">
-				<div class="caption"></div>
-
-			</div>
-		</div>
-
-		<div class="container">
-			<img src="images/11.jpg" alt="Photo description. Watch me whip, nigga" class="image">
-			<div class="overlay">
-				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
-				<div class="overlay-description">Photo description</div>
-			</div>
-			<div class="modal">
-				<span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
-				<img class="modal-content">
-				<div class="caption"></div>
-
-			</div>
-		</div>
-
-		<div class="container">
-			<img src="images/3.jpg" alt="Photo description. Watch me whip, nigga" class="image">
-			<div class="overlay">
-				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
-				<div class="overlay-description">Photo description</div>
-			</div>
-			<div class="modal">
-				<span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
-				<img class="modal-content">
-				<div class="caption"></div>
-
-			</div>
-		</div>
-		<div class="container">
-			<img src="images/12.jpg" alt="Photo description. Watch me whip, nigga" class="image">
-			<div class="overlay">
-				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
-				<div class="overlay-description">Photo description</div>
-			</div>
-			<div class="modal">
-				<span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
-				<img class="modal-content">
-				<div class="caption"></div>
-
 			</div>
 		</div>
 		
-		<div class="container">
+<!-- 		<div class="container">
 			<img src="images/4.jpg" alt="Photo description. Watch me whip, nigga" class="image">
 			<div class="overlay">
 				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
@@ -159,10 +194,11 @@
 			<div class="modal">
 				<span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
 				<img class="modal-content">
-				<div class="caption"></div>
+				
 
 			</div>
 		</div>
+		
 
 		<div class="container">
 			<img src="images/1.jpg" alt="Photo description. Watch me whip, nigga" class="image">
@@ -173,7 +209,7 @@
 			<div class="modal">
 				<span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
 				<img class="modal-content">
-				<div class="caption"></div>
+				
 
 			</div>
 		</div>
@@ -187,7 +223,7 @@
 			<div class="modal">
 				<span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
 				<img class="modal-content">
-				<div class="caption"></div>
+				
 
 			</div>
 		</div>
@@ -201,7 +237,7 @@
 			<div class="modal">
 				<span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
 				<img class="modal-content">
-				<div class="caption"></div>
+				
 
 			</div>
 		</div>
@@ -215,7 +251,7 @@
 			<div class="modal">
 				<span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
 				<img class="modal-content">
-				<div class="caption"></div>
+				
 
 			</div>
 		</div>
@@ -229,10 +265,10 @@
 			<div class="modal">
 				<span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
 				<img class="modal-content">
-				<div class="caption"></div>
+				
 
 			</div>
-		</div>
+		</div> 
 
 		<div class="container">
 			<img src="images/12.jpg" alt="Photo description. Watch me whip, nigga" class="image">
@@ -243,13 +279,13 @@
 			<div class="modal">
 				<span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
 				<img class="modal-content">
-				<div class="caption"></div>
+				
 
-			</div>
-		</div>
+			</div> 
+		</div>-->
 
-	</div><br/><br/><br/>
-	<div id="secondScreen"></div>
+	</div>
+	<div id="contacts"></div>
 
 	<script src="js\jquery-3.2.1.js"></script>
 	<script src="js\script.js"></script>
