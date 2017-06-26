@@ -655,6 +655,7 @@ textarea{
 
 	}
 	.nav-divide{
+		height: 10px;
 		padding: 0;
 	}
 	.login, .register {
@@ -704,6 +705,7 @@ textarea{
 	}
 	h1{
 		letter-spacing: 0;	
+		font-size: 1.4em;
 	}
 	textarea{
 		height: 59% !important;
