@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="css/styles.css">
 	<meta name=”viewport” content=”width=device-width,initial-scale=1.0″>
 </head>
-<body>
+<body onload="loadMap()">
 
 	<div class="nav">
 		<div class="nav-center">
@@ -15,7 +15,12 @@
 			<div class="nav-item nav-divide"></div>
 			<div class="nav-item"><a href="#gallery">GALLERY</a></div>
 			<div class="nav-item nav-divide"></div>
-			<div class="nav-item"><a href="#contacts">CONTACTS</a></div>
+			<div class="nav-item"><div class="dropdown">CONTACTS</div>
+			<div class="dropdown-content">
+				<a href="#contacts">Contacts</a>
+				<a href="#contact-form">Message form</a>
+				<a href="#map">Map</a>
+			</div></div>
 		</div>
 
 
@@ -44,187 +49,21 @@
 
 
 	<div id="gallery">
-		<div class="container">
-			<!-- <img src="https://rawgit.com/AndrewRicfo/photoGallery/master/images/9.jpg" alt="first image" class="image"> -->
+	<!-- 	 <div class="container"> 
 			<img src="images/9.jpg" alt="asdasd" class="image">
 			<div class="overlay">
 				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
 				<div class="overlay-description">Photo descriptionasdasdasda sdasdasdasdasdasd</div>
 			</div>
-		</div>
-		
-		<div class="container">
-			<img src="images/3.jpg" alt="asdasd" class="image">
-			<div class="overlay">
-				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
-				<div class="overlay-description">Photo description</div>
-			</div>
-		</div>
-
-		<div class="container">
-			<img src="images/4.jpg" alt="Photo description. Watch me whip, nigga" class="image">
-			<div class="overlay">
-				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
-				<div class="overlay-description">Photo description</div>
-			</div>
-		</div>
-
-		<div class="container">
-			<img src="images/5.jpg" alt="Photo description. Watch me whip, nigga" class="image">
-			<div class="overlay">
-				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
-				<div class="overlay-description">Photo description</div>
-			</div>
-		</div>
-
-		<div class="container">
-			<img src="images/6.jpg" alt="Photo description. Watch me whip, nigga" class="image">
-			<div class="overlay">
-				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
-				<div class="overlay-description">Photo description</div>
-			</div>
-		</div>
-
-		<div class="container">
-			<img src="images/2.jpg" alt="Photo description. Watch me whip, nigga" class="image">
-			<div class="overlay">
-				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
-				<div class="overlay-description">Photo description</div>
-			</div>
-		</div>
-
-		<div class="container">
-			<img src="images/1.jpg" alt="Photo description. Watch me whip, nigga" class="image">
-			<div class="overlay">
-				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
-				<div class="overlay-description">Photo description</div>
-			</div>
-		</div>
-
-		<div class="container">
-			<img src="images/7.jpg" alt="Photo description. Watch me whip, nigga" class="image">
-			<div class="overlay">
-				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
-				<div class="overlay-description">Photo description</div>
-			</div>
-		</div>
-
-		<div class="container">
-			<img src="images/8.jpg" alt="Photo description. Watch me whip, nigga" class="image">
-			<div class="overlay">
-				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
-				<div class="overlay-description">Photo description</div>
-			</div>
-		</div>
-
-		<div class="container">
-			<img src="images/10.jpg" alt="Photo description. Watch me whip, nigga" class="image">
-			<div class="overlay">
-				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
-				<div class="overlay-description">Photo description</div>
-			</div>
-		</div>
-
-<!-- 		<div class="container">
-			<img src="images/4.jpg" alt="Photo description. Watch me whip, nigga" class="image">
-			<div class="overlay">
-				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
-				<div class="overlay-description">Photo description</div>
-			</div>
-			<div class="modal">
-				<span class="close">&times;</span>
-				<img class="modal-content">
-				
-
-			</div>
-		</div>
-		
-
-		<div class="container">
-			<img src="images/1.jpg" alt="Photo description. Watch me whip, nigga" class="image">
-			<div class="overlay">
-				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
-				<div class="overlay-description">Photo description</div>
-			</div>
-			<div class="modal">
-				<span class="close">&times;</span>
-				<img class="modal-content">
-				
-
-			</div>
-		</div>
-
-		<div class="container">
-			<img src="images/5.jpg" alt="Photo description. Watch me whip, nigga" class="image">
-			<div class="overlay">
-				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
-				<div class="overlay-description">Photo description</div>
-			</div>
-			<div class="modal">
-				<span class="close">&times;</span>
-				<img class="modal-content">
-				
-
-			</div>
-		</div>
-
-		<div class="container">
-			<img src="images/10.jpg" alt="Photo description. Watch me whip, nigga" class="image">
-			<div class="overlay">
-				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
-				<div class="overlay-description">Photo description</div>
-			</div>
-			<div class="modal">
-				<span class="close">&times;</span>
-				<img class="modal-content">
-				
-
-			</div>
-		</div>
-
-		<div class="container">
-			<img src="images/6.jpg" alt="Photo description. Watch me whip, nigga" class="image">
-			<div class="overlay">
-				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
-				<div class="overlay-description">Photo description</div>
-			</div>
-			<div class="modal">
-				<span class="close">&times;</span>
-				<img class="modal-content">
-				
-
-			</div>
-		</div>
-
-		<div class="container">
-			<img src="images/8.jpg" alt="Photo description. Watch me whip, nigga" class="image">
-			<div class="overlay">
-				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
-				<div class="overlay-description">Photo description</div>
-			</div>
-			<div class="modal">
-				<span class="close">&times;</span>
-				<img class="modal-content">
-				
-
-			</div>
-		</div> 
-
-		<div class="container">
-			<img src="images/12.jpg" alt="Photo description. Watch me whip, nigga" class="image">
-			<div class="overlay">
-				<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">123</i></div>
-				<div class="overlay-description">Photo description</div>
-			</div>
-			<div class="modal">
-				<span class="close">&times;</span>
-				<img class="modal-content">
-				
-
-			</div> 
-		</div>-->
-
+		</div> -->
 	</div>
+
+	<div id="pagination">
+		<a href="javascript:prevPage()" id="btn_prev" class="pagi-butt"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Prev</a>
+		<a href="javascript:nextPage()" id="btn_next" class="pagi-butt">Next&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a><br>
+		<p>page: <span id="page"></span></p>
+	</div>
+
 
 	<div class="modal">
 		<button class="button display-left modal-left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
@@ -233,9 +72,51 @@
 		<img class="modal-content" >
 	</div>
 
-	<div id="contacts"></div>
+	<div id="contacts">
+		<div class="row">
+			<h1>Contact us</h1>
 
-	<script src="js\jquery-3.2.1.js"></script>
-	<script src="js\script.js"></script>
+		</div>
+
+		<div class="row">
+			<div class="row-item">
+				<i class="fa fa-phone" aria-hidden="true"></i>
+			</div>
+			<div class="row-item">
+				<i class="fa fa-map-marker" aria-hidden="true"></i>
+			</div>
+			<div class="row-item">
+				<i class="fa fa-envelope" aria-hidden="true"></i>
+			</div>
+		</div>
+
+		<div class="row">
+			<h6 class="row-item">+380 50 108 6504</h6>
+			<h6 class="row-item">Kyiv, Kovalskyi lane, 5</h6>
+			<h6 class="row-item">bloodfurry9595@ gmail.com</h6>
+		</div>
+
+		<div class="row">
+			<hr>
+			<form action="#" id="contact-form">
+				<div class="form-left">
+					<input type="text" name="name" placeholder="YOUR NAME" required>
+					<input type="email" name="email" placeholder="YOUR EMAIL" required>
+				</div><div class="form-right">
+				<textarea name="message" placeholder="YOUR MESSAGE" required></textarea>
+			</div>
+			<div class="row">
+				<button class="submit clearfix">Send message</button>
+			</div>
+		</form>
+	</div>
+
+	<div id="map"></div>
+</div>
+
+<script src="js\jquery-3.2.1.js" defer></script>
+<script src="js\script.js" defer></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD6dcxvKX6xqN-AC9_ElsHmdYMVRv0s324&callback=loadMap" async defer></script>
+
 </body>
 </html>
