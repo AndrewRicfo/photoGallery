@@ -1,4 +1,4 @@
-var imgJSON = [
+[
 {
 	"srcThumb": "../fproject/images/thumbnails/th-1.jpg",
 	"srcFull": "../fproject/images/full/1.jpg",
