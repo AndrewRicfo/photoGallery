@@ -1,3 +1,10 @@
+// preloader till content is loaded
+$(window).on('load', function() {
+		// Animate loader off screen
+		$(".preloader").fadeOut("slow");;
+	});
+
+
 // uploading images
 //ajax call for .json file at github
 var imgJSON = $.ajax({
@@ -45,6 +52,12 @@ var w = window,
 x = w.innerWidth,
 y = w.innerHeight;
 
+window.addEventListener('resize', setWindowSize);
+function setWindowSize() {
+	x = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+	y = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+}
+
 $(document).scroll(function() {
 
 	if($(window).scrollTop() > y-50){
@@ -66,7 +79,7 @@ $(document).on('click', 'a', function(event){
 		event.preventDefault();
 
 		$('html, body').animate({
-			scrollTop: $( $.attr(this, 'href') ).offset().top -50
+			scrollTop: $( $.attr(this, 'href') ).offset().top - 30
 		}, 500);
 	}	
 });
@@ -230,7 +243,7 @@ for(var i=0; i<n; i++){
 	img.onclick = function(){
 		if(ratio>1){
 			if(modalW==x*0.85)
-				modalImg.style.margin = "20% auto"
+				modalImg.style.margin = "20% auto 0"
 			else
 				modalImg.style.margin="0 auto"
 		}
@@ -310,7 +323,7 @@ for(var i=0; i<n; i++){
 		modalImg.style.height = modalH + "px"
 		if(ratio>1){
 			if(modalW==x*0.85)
-				modalImg.style.margin = "20% auto"
+				modalImg.style.margin = "20% auto 0"
 			else
 				modalImg.style.margin="0 auto"
 		}
@@ -321,7 +334,6 @@ for(var i=0; i<n; i++){
 				modalImg.style.margin="5% auto"
 		}
 		modalImg.src = newSrc
-
 	}
 
 	r.onclick = function(){
@@ -359,7 +371,7 @@ for(var i=0; i<n; i++){
 		modalImg.style.height = modalH + "px"
 		if(ratio>1){
 			if(modalW==x*0.85)
-				modalImg.style.margin = "20% auto"
+				modalImg.style.margin = "20% auto 0"
 			else
 				modalImg.style.margin="0 auto"
 		}
@@ -440,22 +452,47 @@ function loadMap() {
 }
 
 
+//social sharing
+
+Share = {
+	facebook: function(purl, ptitle, pimg, text) {
+		url  = 'http://www.facebook.com/sharer.php?s=100';
+		url += '&p[title]='     + encodeURIComponent(ptitle);
+		url += '&p[summary]='   + encodeURIComponent(text);
+		url += '&p[url]='       + encodeURIComponent(purl);
+		url += '&p[images][0]=' + encodeURIComponent(pimg);
+		Share.popup(url);
+	},
+	twitter: function(purl, ptitle) {
+		url  = 'http://twitter.com/share?';
+		url += 'text='      + encodeURIComponent(ptitle);
+		url += '&url='      + encodeURIComponent(purl);
+		url += '&counturl=' + encodeURIComponent(purl);
+		Share.popup(url);
+	}, 
 
 
+	gplus: function (purl) {
+		url  = 'https://plus.google.com/share?';
+		url += 'url='      + encodeURIComponent(purl);
+		Share.popup(url);
+	},
 
-// var imgJSON = $.ajax({
-// 	url: 'https://rawgit.com/AndrewRicfo/photoGallery/master/js/jason.json',
-// 	data: {},
-// 	type: 'GET',
-// 	crossDomain: true,
-// 	dataType: 'json',
-// 	context: document.body,
-// 	global: false,
-// 	async:false,
-// 	success: function(result) {
-// 		return result;
-// 	},
-// 	error: function() { alert('Failed to get .json content!'); },
-// }).responseText;
+	li: function(purl, ptitle, ptext){
+		url = 'http://www.linkedin.com/shareArticle?mini=true'
+		url += '&url='       + encodeURIComponent(purl)
+		url += '&title='     + encodeURIComponent(ptitle)
+		url += '&summary='   + encodeURIComponent(ptext);
+	},
 
-// imgJSON = $.parseJSON(imgJSON)
+	me: function(el){
+		console.log(el.href);                
+		Share.popup(el.href);
+		return false;                
+	},
+
+	popup: function(url) {
+		window.open(url,'','toolbar=0,status=0,width=626,height=436');
+	}
+};
+

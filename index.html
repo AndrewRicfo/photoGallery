@@ -8,6 +8,8 @@
 	<meta name=”viewport” content=”width=device-width,initial-scale=1.0″>
 </head>
 <body onload="loadMap()">
+	<div class="preloader"></div>
+
 
 	<div class="nav">
 		<div class="nav-center">
@@ -79,21 +81,21 @@
 		</div>
 
 		<div class="row">
-			<div class="row-item">
+			<div class="row-item row-item-3">
 				<i class="fa fa-phone" aria-hidden="true"></i>
 			</div>
-			<div class="row-item">
+			<div class="row-item row-item-3">
 				<i class="fa fa-map-marker" aria-hidden="true"></i>
 			</div>
-			<div class="row-item">
+			<div class="row-item row-item-3">
 				<i class="fa fa-envelope" aria-hidden="true"></i>
 			</div>
 		</div>
 
 		<div class="row">
-			<h6 class="row-item">+380 50 108 6504</h6>
-			<h6 class="row-item">Kyiv, Kovalskyi lane, 5</h6>
-			<h6 class="row-item">bloodfurry9595@ gmail.com</h6>
+			<h6 class="row-item row-item-3">+380 50 108 6504</h6>
+			<h6 class="row-item row-item-3">Kyiv, Kovalskyi lane, 5</h6>
+			<h6 class="row-item row-item-3">bloodfurry9595@ gmail.com</h6>
 		</div>
 
 		<div class="row">
@@ -109,9 +111,24 @@
 				<button class="submit clearfix">Send message</button>
 			</div>
 		</form>
+
 	</div>
 
 	<div id="map"></div>
+	<div id="footer">
+		<div class="row">
+			<div class="row-item row-item-3"><h6>©Andrey Chernyavskiy, Kyiv 2017</h6></div>
+			<div class="row-item row-item-3">
+				<a href="https://www.facebook.com/sharer.php?s=100&p[title]=&p[summary]=&p[url]=https%3A%2F%2Fgithub.com%2FAndrewRicfo%2FphotoGallery&p[images][0]=" target="_blank" onclick="return Share.me(this);"><i class="fa fa-facebook"></i></a>
+
+				<a href="http://twitter.com/share?text=Check out my repo&url=https://github.com/AndrewRicfo/photoGallery&hashtags=photogallery,project,front-end" target="_blank" onclick="return Share.me(this)"><i class="fa fa-twitter"></i></a>
+
+				<a href="https://plus.google.com/share?url=https%3A%2F%2Fgithub.com%2FAndrewRicfo%2FphotoGallery" target="_blank" onclick="return Share.me(this)"><i class="fa fa-google-plus"></i></a>
+
+				<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fgithub.com%2FAndrewRicfo%2FphotoGallery" target="_blank" onclick="return Share.me(this)"><i class="fa fa-linkedin"></i></a>
+			</div>
+		</div>
+	</div>
 </div>
 
 <script src="js\jquery-3.2.1.js" defer></script>
