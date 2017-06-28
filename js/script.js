@@ -1,10 +1,24 @@
 "use strict";
+
+$('.btn').on('click', function(){
+	alert($(this).html())
+})
+
+
 // preloader till content is loaded
 $(window).on('load', function() {
 		// Animate loader off screen
 		$(".preloader").fadeOut("slow");;
 	});
 
+
+$('.dropdown-content').on('mouseenter', function(){
+	$('.dropdown').toggleClass('active')
+})
+
+$('.dropdown-content').on('mouseleave', function(){
+	$('.dropdown').toggleClass('active')
+})
 
 // uploading images
 //ajax call for .json file at github
@@ -35,6 +49,7 @@ var likes = []
 var widths = []
 var heights = []
 var len = imgJSON.length;
+var keywords = []
 
 for(var i=0; i<len; i++){
 	sourcesTh.push(imgJSON[i].srcThumb)
@@ -44,6 +59,7 @@ for(var i=0; i<len; i++){
 	likes.push(imgJSON[i].likes)
 	widths.push(imgJSON[i].width)
 	heights.push(imgJSON[i].height)
+	keywords.push(imgJSON[i].keywords)
 }
 
 
@@ -76,7 +92,7 @@ $(document).scroll(function() {
 });
 
 $(document).on('click', 'a', function(event){
-	if(!($(this).hasClass('pagi-butt'))){
+	if(!($(this).hasClass('btn'))){
 		event.preventDefault();
 
 		$('html, body').animate({
@@ -165,8 +181,6 @@ $(document).scroll(function() {
 });
 
 
-
-
 // pagination
 var current_page = 1;
 var records_per_page = 10;
@@ -186,7 +200,6 @@ function nextPage()
 		changePage(current_page, 1, 0);
 	}
 }
-
 
 
 function changePage(page, flag, ma)
@@ -217,8 +230,14 @@ function changePage(page, flag, ma)
     gallery.innerHTML = "";
     if(flag == 1){
     	for (var i = (page-1) * records_per_page; i < (page * records_per_page) && i < len; i++) {
+    		var keyString = ""
+    		for(var j=0;j<keywords[i].length; j++){
+    			keyString += keywords[i][j] + " "
+    		}
+    		keyString = keyString.slice(0, keyString.length-1)
+
     		gallery.innerHTML += '<div class="container"> \
-    		<img src="' + sourcesTh[i] + '" alt="' + alts[i] + '" class="image"> \
+    		<img src="' + sourcesTh[i] + '" alt="' + alts[i] + '" class="image' + keyString +'"> \
     		<div class="overlay"> \
     		<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">' + likes[i] + 
     		'</i></div> \
@@ -272,8 +291,10 @@ function changePage(page, flag, ma)
 
 	img.onclick = function(){
 		if(ratio>1){
-			modalImg.style.margin="0 auto"
-			console.log(ratio)
+			if(modalW == x*0.85)
+				modalImg.style.margin="25% auto"
+			else
+				modalImg.style.margin="0 auto"
 		}
 		else{
 			if(x < 1000)
@@ -350,7 +371,10 @@ function changePage(page, flag, ma)
 		modalImg.style.width = modalW + "px"
 		modalImg.style.height = modalH + "px"
 		if(ratio>1){
-			modalImg.style.margin="0 auto"
+			if(modalW == x*0.85)
+				modalImg.style.margin="25% auto"
+			else
+				modalImg.style.margin="0 auto"
 		}
 		else{
 			if(x < 1000)
@@ -395,7 +419,10 @@ function changePage(page, flag, ma)
 		modalImg.style.width = modalW + "px"
 		modalImg.style.height = modalH + "px"
 		if(ratio>1){
-			modalImg.style.margin="0 auto"
+			if(modalW == x*0.85)
+				modalImg.style.margin="25% auto"
+			else
+				modalImg.style.margin="0 auto"
 		}
 		else{
 			if(x < 1000)

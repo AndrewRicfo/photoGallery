@@ -6,7 +6,8 @@
 	"author": "Author 1",
 	"likes": 1,
 	"width": 1024,
-	"height": 1280 
+	"height": 1280,
+	"keywords": [] 
 },
 {
 	"srcThumb": "../fproject/images/thumbnails/th-2.jpg",
@@ -15,7 +16,8 @@
 	"author": "Author 1",
 	"likes": 2,
 	"width": 1920,
-	"height": 1080
+	"height": 1080,
+	"keywords": ["beauty"] 
 },
 {
 	"srcThumb": "../fproject/images/thumbnails/th-3.jpg",
@@ -24,7 +26,8 @@
 	"author": "Author 2",
 	"likes": 3,
 	"width": 1280,
-	"height": 853
+	"height": 853,
+	"keywords": ["nature", "beauty"] 
 },
 {
 	"srcThumb": "../fproject/images/thumbnails/th-4.jpg",
@@ -33,7 +36,8 @@
 	"author": "Author 4",
 	"likes": 4,
 	"width": 1280,
-	"height": 788
+	"height": 788,
+	"keywords": [] 
 },
 {
 	"srcThumb": "../fproject/images/thumbnails/th-5.jpg",
@@ -42,7 +46,8 @@
 	"author": "Author 5",
 	"likes": 5,
 	"width": 1280,
-	"height": 720
+	"height": 720,
+	"keywords": [] 
 },
 {
 	"srcThumb": "../fproject/images/thumbnails/th-6.jpg",
@@ -51,7 +56,8 @@
 	"author": "Author 6",
 	"likes": 6,
 	"width": 1280,
-	"height": 899
+	"height": 899,
+	"keywords": ["nature"] 
 },
 {
 	"srcThumb": "../fproject/images/thumbnails/th-7.jpg",
@@ -60,7 +66,8 @@
 	"author": "Author 7",
 	"likes": 7,
 	"width": 1280,
-	"height": 853
+	"height": 853,
+	"keywords": ["nature"] 
 },
 {
 	"srcThumb": "../fproject/images/thumbnails/th-8.jpg",
@@ -69,7 +76,8 @@
 	"author": "Author 8",
 	"likes": 8,
 	"width": 854,
-	"height": 1280
+	"height": 1280,
+	"keywords": [] 
 },
 {
 	"srcThumb": "../fproject/images/thumbnails/th-9.jpg",
@@ -78,7 +86,8 @@
 	"author": "Author 9",
 	"likes": 9,
 	"width": 1280,
-	"height": 853
+	"height": 853,
+	"keywords": ["beauty"] 
 },
 {
 	"srcThumb": "../fproject/images/thumbnails/th-10.jpg",
@@ -87,7 +96,8 @@
 	"author": "Author 10",
 	"likes": 10,
 	"width": 864,
-	"height": 1280
+	"height": 1280,
+	"keywords": ["beauty"] 
 },
 {
 	"srcThumb": "../fproject/images/thumbnails/th-11.jpg",
@@ -96,7 +106,8 @@
 	"author": "Author 11",
 	"likes": 11,
 	"width": 1280,
-	"height": 853 
+	"height": 853,
+	"keywords": [] 
 },
 {
 	"srcThumb": "../fproject/images/thumbnails/th-12.jpg",
@@ -105,7 +116,8 @@
 	"author": "Author 12",
 	"likes": 12,
 	"width": 1280,
-	"height": 854
+	"height": 854,
+	"keywords": ["beauty"] 
 },
 {
 	"srcThumb": "../fproject/images/thumbnails/th-13.jpg",
@@ -114,7 +126,8 @@
 	"author": "Author 13",
 	"likes": 13,
 	"width": 1280,
-	"height": 853
+	"height": 853,
+	"keywords": ["nature"] 
 },
 {
 	"srcThumb": "../fproject/images/thumbnails/th-14.jpg",
@@ -123,7 +136,8 @@
 	"author": "Author 14",
 	"likes": 14,
 	"width": 1280,
-	"height": 854
+	"height": 854,
+	"keywords": ["beauty", "nature"] 
 },
 {
 	"srcThumb": "../fproject/images/thumbnails/th-15.jpg",
@@ -132,7 +146,8 @@
 	"author": "Author 15",
 	"likes": 15,
 	"width": 853,
-	"height": 1280
+	"height": 1280,
+	"keywords": ["beauty"] 
 },
 {
 	"srcThumb": "../fproject/images/thumbnails/th-16.jpg",
@@ -141,7 +156,8 @@
 	"author": "Author 16",
 	"likes": 16,
 	"width": 853,
-	"height": 1280
+	"height": 1280,
+	"keywords": [] 
 },
 {
 	"srcThumb": "../fproject/images/thumbnails/th-17.jpg",
@@ -150,7 +166,8 @@
 	"author": "Author 17",
 	"likes": 17,
 	"width": 1280,
-	"height": 853
+	"height": 853,
+	"keywords": ["nature"] 
 },
 {
 	"srcThumb": "../fproject/images/thumbnails/th-18.jpg",
@@ -159,7 +176,8 @@
 	"author": "Author 18",
 	"likes": 18,
 	"width": 1280,
-	"height": 853
+	"height": 853,
+	"keywords": ["nature"] 
 },
 {
 	"srcThumb": "../fproject/images/thumbnails/th-19.jpg",
@@ -168,7 +186,8 @@
 	"author": "Author 19",
 	"likes": 19,
 	"width": 854,
-	"height": 1280
+	"height": 1280,
+	"keywords": [] 
 },
 {
 	"srcThumb": "../fproject/images/thumbnails/th-20.jpg",
@@ -177,7 +196,8 @@
 	"author": "Author 20",
 	"likes": 20,
 	"width": 900,
-	"height": 980
+	"height": 980,
+	"keywords": [] 
 },
 {
 	"srcThumb": "../fproject/images/thumbnails/th-21.jpg",
@@ -186,7 +206,8 @@
 	"author": "Author 21",
 	"likes": 21,
 	"width": 1280,
-	"height": 1024
+	"height": 1024,
+	"keywords": ["nature", "beauty"] 
 },
 {
 	"srcThumb": "../fproject/images/thumbnails/th-22.jpg",
@@ -195,6 +216,7 @@
 	"author": "Author 22",
 	"likes": 22,
 	"width": 750,
-	"height": 1110
+	"height": 1110,
+	"keywords": ["nature"] 
 } 
 ]

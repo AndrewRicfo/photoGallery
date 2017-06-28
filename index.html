@@ -11,8 +11,8 @@
 	<div class="preloader"></div>
 
 
-	<div class="nav">
-		<div class="nav-center">
+	<div class="nav clearfix">
+		<div class="nav-center clearfix">
 			<div class="nav-item" id="asd"><a class="active" href="#home">HOME</a></div>
 			<div class="nav-item nav-divide"></div>
 			<div class="nav-item"><a href="#gallery-wrapper">GALLERY</a></div>
@@ -26,14 +26,14 @@
 		</div>
 
 
-		<div class="nav-right">
+		<div class="nav-right clearfix">
 			<a href="#"><div class="nav-item btn">Register</div></a>
 			<a href="#"><div class="nav-item btn">Log in</div></a>
 		</div>
 	</div>
 
 	<div class="slider" id="home">
-		<div class="first-screen-text">Andrew's photogallery</div>
+		<h1 class="first-screen-text">Andrew's photogallery</h1>
 		<a href="#gallery"><div class="display-down bounce">
 			<i class="fa fa-angle-down" aria-hidden="true"></i>
 		</div></a>
@@ -44,13 +44,15 @@
 		<img class="mySlides fade" src="images/sl-6.jpg">
 		<img class="mySlides fade" src="images/sl-4.jpg">
 
-		<button class="button display-left" onclick="plusSlide(-1)"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
-		<button class="button display-right" onclick="plusSlide(+1)"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+		<button class="btn display-left" onclick="plusSlide(-1)"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+		<button class="btn display-right" onclick="plusSlide(+1)"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
 	</div>
 
 	<div id="gallery-wrapper">
 		<div id="search-sort">
-		<input type="text" id="search-field" placeholder="enter the author's name here">
+		<input type="text" id="search-field" placeholder="Search author">
+		<button class="btn btn-sort">Nature</button>
+		<button class="btn btn-sort">Beauty</button>
 		</div>
 
 		<div id="gallery">
@@ -64,23 +66,23 @@
 	</div>
 </div>
 
-<div id="pagination">
-	<a href="javascript:prevPage()" id="btn_prev" class="pagi-butt"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Prev</a>
-	<a href="javascript:nextPage()" id="btn_next" class="pagi-butt">Next&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a><br>
+<div id="pagination"><br>
+	<a href="javascript:prevPage()" id="btn_prev" class="btn"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Prev</a>
+	<a href="javascript:nextPage()" id="btn_next" class="btn">Next&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a><br>
 	<p id="page-counter">page: <span id="page"></span></p>
 </div>
 
 
 <div class="modal">
-	<button class="button display-left modal-left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
-	<button class="button display-right modal-right"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+	<button class="btn display-left modal-left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+	<button class="btn display-right modal-right"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
 	<span class="close">&times;</span>
 	<img class="modal-content" >
 </div>
 
 <div id="contacts">
 	<div class="row">
-		<h1>Contact us</h1>
+		<h2>Contact us</h2>
 
 	</div>
 
@@ -104,15 +106,15 @@
 
 	<div class="row">
 		<hr>
-		<form action="#" id="contact-form">
-			<div class="form-left">
-				<input type="text" name="name" placeholder="YOUR NAME" required>
-				<input type="email" name="email" placeholder="YOUR EMAIL" required>
-			</div><div class="form-right">
+		<form action="#" id="contact-form" class="clearfix">
+			<div class="form-left clearfix">
+				<input type="text" name="name" placeholder="NAME" required>
+				<input type="email" name="email" placeholder="EMAIL" required>
+			</div><div class="form-right clearfix">
 			<textarea name="message" placeholder="YOUR MESSAGE" required></textarea>
 		</div>
-		<div class="row">
-			<button class="submit clearfix">Send message</button>
+		<div class="row clearfix">
+			<button class="btn submit clearfix">Send message</button>
 		</div>
 	</form>
 
