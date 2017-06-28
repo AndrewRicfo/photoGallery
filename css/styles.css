@@ -144,7 +144,7 @@ table {
 	padding: 0;
 }
 
-.register, .login{
+.btn{
 	padding: 10px 25px;
 	background-color: rgba(255,255,255,0.3);
 	border-radius: 5px;
@@ -152,14 +152,10 @@ table {
 	width: auto;
 }
 
-.register:hover, .login:hover{
+.btn:hover{
 	background-color: rgba(70,174 ,210, 0.5);
 	color: white;
 	transition: all .3s ease;
-}
-
-.login {
-	margin-right: 25px;
 }
 
 
@@ -348,10 +344,27 @@ table {
 
 /*gallery start*/
 
+#search-btn{
+	display: inline-block;
+	border: 1px solid rgba(0,0,0,0.7);
+}
+
+#search-btn:hover{
+	cursor: pointer;
+}
+
+#search-field{
+	margin: 4% 0 0 1rem;
+	padding: 10px;
+	width: 15%;
+	margin-top: 4%;
+
+}
+
 #gallery {
 	line-height: 0;
 	width:100%;
-	padding: 5% 1rem;
+	padding: 1rem 1rem 5%;
 	background-color: white;
 	-webkit-column-count: 5;
 	-webkit-column-gap:   1rem;
@@ -692,7 +705,7 @@ textarea{
 	.nav-divide{
 		padding: 0;
 	}
-	.login, .register {
+	.btn {
 		padding: 5px;
 	}
 }
@@ -711,7 +724,7 @@ textarea{
 		height: 10px;
 		padding: 0;
 	}
-	.login, .register {
+	.btn {
 		padding: 5px;
 	}
 	/*.modal-content{
@@ -767,13 +780,16 @@ textarea{
 		.submit{
 			margin: -2% 0.7%;
 		}
-}
-
-/*@media screen and (min-width:0) and (min-resolution: +72dpi) {
-	#footer{
-		display: none;
 	}
-}*/
+
+	@media screen and (min-width:0) and (min-resolution: +72dpi) {
+		body{
+			overflow-x: hidden;
+		}
+		.modal-content{
+			overflow:hidden;
+		}
+	}
 
 
-_:-ms-lang(x), #footer{ display: none; }
+/*_:-ms-lang(x), #footer{ display: none; }*/

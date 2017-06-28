@@ -15,7 +15,7 @@
 		<div class="nav-center">
 			<div class="nav-item" id="asd"><a class="active" href="#home">HOME</a></div>
 			<div class="nav-item nav-divide"></div>
-			<div class="nav-item"><a href="#gallery">GALLERY</a></div>
+			<div class="nav-item"><a href="#gallery-wrapper">GALLERY</a></div>
 			<div class="nav-item nav-divide"></div>
 			<div class="nav-item"><div class="dropdown">CONTACTS</div>
 			<div class="dropdown-content">
@@ -27,8 +27,8 @@
 
 
 		<div class="nav-right">
-			<a href="#"><div class="nav-item register">Register</div></a>
-			<a href="#"><div class="nav-item login">Log in</div></a>
+			<a href="#"><div class="nav-item btn">Register</div></a>
+			<a href="#"><div class="nav-item btn">Log in</div></a>
 		</div>
 	</div>
 
@@ -48,9 +48,12 @@
 		<button class="button display-right" onclick="plusSlide(+1)"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
 	</div>
 
+	<div id="gallery-wrapper">
+		<div id="search-sort">
+		<input type="text" id="search-field" placeholder="enter the author's name here">
+		</div>
 
-
-	<div id="gallery">
+		<div id="gallery">
 	<!-- 	 <div class="container"> 
 			<img src="images/9.jpg" alt="asdasd" class="image">
 			<div class="overlay">
@@ -59,76 +62,77 @@
 			</div>
 		</div> -->
 	</div>
+</div>
 
-	<div id="pagination">
-		<a href="javascript:prevPage()" id="btn_prev" class="pagi-butt"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Prev</a>
-		<a href="javascript:nextPage()" id="btn_next" class="pagi-butt">Next&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a><br>
-		<p>page: <span id="page"></span></p>
-	</div>
+<div id="pagination">
+	<a href="javascript:prevPage()" id="btn_prev" class="pagi-butt"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;Prev</a>
+	<a href="javascript:nextPage()" id="btn_next" class="pagi-butt">Next&nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a><br>
+	<p id="page-counter">page: <span id="page"></span></p>
+</div>
 
 
-	<div class="modal">
-		<button class="button display-left modal-left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
-		<button class="button display-right modal-right"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
-		<span class="close">&times;</span>
-		<img class="modal-content" >
-	</div>
+<div class="modal">
+	<button class="button display-left modal-left"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+	<button class="button display-right modal-right"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+	<span class="close">&times;</span>
+	<img class="modal-content" >
+</div>
 
-	<div id="contacts">
-		<div class="row">
-			<h1>Contact us</h1>
-
-		</div>
-
-		<div class="row">
-			<div class="row-item row-item-3">
-				<i class="fa fa-phone" aria-hidden="true"></i>
-			</div>
-			<div class="row-item row-item-3">
-				<i class="fa fa-map-marker" aria-hidden="true"></i>
-			</div>
-			<div class="row-item row-item-3">
-				<i class="fa fa-envelope" aria-hidden="true"></i>
-			</div>
-		</div>
-
-		<div class="row">
-			<h6 class="row-item row-item-3">+380 50 108 6504</h6>
-			<h6 class="row-item row-item-3">Kyiv, Kovalskyi lane, 5</h6>
-			<h6 class="row-item row-item-3">bloodfurry9595@ gmail.com</h6>
-		</div>
-
-		<div class="row">
-			<hr>
-			<form action="#" id="contact-form">
-				<div class="form-left">
-					<input type="text" name="name" placeholder="YOUR NAME" required>
-					<input type="email" name="email" placeholder="YOUR EMAIL" required>
-				</div><div class="form-right">
-				<textarea name="message" placeholder="YOUR MESSAGE" required></textarea>
-			</div>
-			<div class="row">
-				<button class="submit clearfix">Send message</button>
-			</div>
-		</form>
+<div id="contacts">
+	<div class="row">
+		<h1>Contact us</h1>
 
 	</div>
 
-	<div id="map"></div>
-	<div id="footer">
-		<div class="row">
-			<div class="row-item row-item-3"><h6>©Andrey Chernyavskiy, Kyiv 2017</h6></div>
-			<div class="row-item row-item-3">
-				<a href="https://www.facebook.com/sharer.php?s=100&p[title]=&p[summary]=&p[url]=https%3A%2F%2Fgithub.com%2FAndrewRicfo%2FphotoGallery&p[images][0]=" target="_blank" onclick="return Share.me(this);"><i class="fa fa-facebook"></i></a>
-
-				<a href="http://twitter.com/share?text=Check out my repo&url=https://github.com/AndrewRicfo/photoGallery&hashtags=photogallery,project,front-end" target="_blank" onclick="return Share.me(this)"><i class="fa fa-twitter"></i></a>
-
-				<a href="https://plus.google.com/share?url=https%3A%2F%2Fgithub.com%2FAndrewRicfo%2FphotoGallery" target="_blank" onclick="return Share.me(this)"><i class="fa fa-google-plus"></i></a>
-
-				<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fgithub.com%2FAndrewRicfo%2FphotoGallery" target="_blank" onclick="return Share.me(this)"><i class="fa fa-linkedin"></i></a>
-			</div>
+	<div class="row">
+		<div class="row-item row-item-3">
+			<i class="fa fa-phone" aria-hidden="true"></i>
+		</div>
+		<div class="row-item row-item-3">
+			<i class="fa fa-map-marker" aria-hidden="true"></i>
+		</div>
+		<div class="row-item row-item-3">
+			<i class="fa fa-envelope" aria-hidden="true"></i>
 		</div>
 	</div>
+
+	<div class="row">
+		<h6 class="row-item row-item-3">+380 50 108 6504</h6>
+		<h6 class="row-item row-item-3">Kyiv, Kovalskyi lane, 5</h6>
+		<h6 class="row-item row-item-3">bloodfurry9595@ gmail.com</h6>
+	</div>
+
+	<div class="row">
+		<hr>
+		<form action="#" id="contact-form">
+			<div class="form-left">
+				<input type="text" name="name" placeholder="YOUR NAME" required>
+				<input type="email" name="email" placeholder="YOUR EMAIL" required>
+			</div><div class="form-right">
+			<textarea name="message" placeholder="YOUR MESSAGE" required></textarea>
+		</div>
+		<div class="row">
+			<button class="submit clearfix">Send message</button>
+		</div>
+	</form>
+
+</div>
+
+<div id="map"></div>
+<div id="footer">
+	<div class="row">
+		<div class="row-item row-item-3"><h6>©Andrey Chernyavskiy, Kyiv 2017</h6></div>
+		<div class="row-item row-item-3">
+			<a href="https://www.facebook.com/sharer.php?s=100&p[title]=&p[summary]=&p[url]=https%3A%2F%2Fgithub.com%2FAndrewRicfo%2FphotoGallery&p[images][0]=" target="_blank" onclick="return Share.me(this);"><i class="fa fa-facebook"></i></a>
+
+			<a href="http://twitter.com/share?text=Check out my repo&url=https://github.com/AndrewRicfo/photoGallery&hashtags=photogallery,project,front-end" target="_blank" onclick="return Share.me(this)"><i class="fa fa-twitter"></i></a>
+
+			<a href="https://plus.google.com/share?url=https%3A%2F%2Fgithub.com%2FAndrewRicfo%2FphotoGallery" target="_blank" onclick="return Share.me(this)"><i class="fa fa-google-plus"></i></a>
+
+			<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fgithub.com%2FAndrewRicfo%2FphotoGallery" target="_blank" onclick="return Share.me(this)"><i class="fa fa-linkedin"></i></a>
+		</div>
+	</div>
+</div>
 </div>
 
 <script src="js\jquery-3.2.1.js" defer></script>

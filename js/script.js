@@ -1,3 +1,4 @@
+"use strict";
 // preloader till content is loaded
 $(window).on('load', function() {
 		// Animate loader off screen
@@ -92,7 +93,7 @@ $(window).scroll(function() {
 		$('.dropdown').removeClass('active');
 		$('.nav a:eq(0)').addClass('active');
 	}
-	if ($(this).scrollTop() >= $('#gallery').offset().top - 100) {
+	if ($(this).scrollTop() >= $('#gallery-wrapper').offset().top - 100) {
 		$('.nav a').removeClass('active');
 		$('.dropdown').removeClass('active');
 		$('.nav a:eq(1)').addClass('active');
@@ -164,8 +165,9 @@ $(document).scroll(function() {
 });
 
 
-// pagination
 
+
+// pagination
 var current_page = 1;
 var records_per_page = 10;
 
@@ -173,7 +175,7 @@ function prevPage()
 {
 	if (current_page > 1) {
 		current_page--;
-		changePage(current_page);
+		changePage(current_page, 1, 0);
 	}
 }
 
@@ -181,11 +183,13 @@ function nextPage()
 {
 	if (current_page < numPages()) {
 		current_page++;
-		changePage(current_page);
+		changePage(current_page, 1, 0);
 	}
 }
 
-function changePage(page)
+
+
+function changePage(page, flag, ma)
 {
 	var btn_next = document.getElementById("btn_next");
 	var btn_prev = document.getElementById("btn_prev");
@@ -197,32 +201,57 @@ function changePage(page)
     if (page < 1) page = 1;
     if (page > num) page = num;
 
-    gallery.innerHTML = "";
-
-    //create gallery
-    for (var i = (page-1) * records_per_page; i < (page * records_per_page) && i < len; i++) {
-    	gallery.innerHTML += '<div class="container"> \
-    	<img src="' + sourcesTh[i] + '" alt="' + alts[i] + '" class="image"> \
-    	<div class="overlay"> \
-    	<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">' + likes[i] + 
-    	'</i></div> \
-    	<div class="overlay-description">Author: ' + authors[i] + ' </div> </div> </div>';
+    if(flag==2){
+    	$('#pagination').css('display', 'none')
+    	$('.modal-left').css('display', 'none')
+    	$('.modal-right').css('display', 'none')
+    }
+    if(!$('#search-field').val()){
+    	$("#pagination").css('display', 'block')
+    	$('.modal-left').css('display', 'block')
+    	$('.modal-right').css('display', 'block')
+    	flag = 1
     }
 
+    //create gallery
+    gallery.innerHTML = "";
+    if(flag == 1){
+    	for (var i = (page-1) * records_per_page; i < (page * records_per_page) && i < len; i++) {
+    		gallery.innerHTML += '<div class="container"> \
+    		<img src="' + sourcesTh[i] + '" alt="' + alts[i] + '" class="image"> \
+    		<div class="overlay"> \
+    		<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">' + likes[i] + 
+    		'</i></div> \
+    		<div class="overlay-description">Author: ' + authors[i] + ' </div> </div> </div>';
+    	}
+    }
+    if(flag == 2){
+    	for (var i = 0;  i < ma.length; i++) {
+    		gallery.innerHTML += '<div class="container"> \
+    		<img src="' + sourcesTh[ma[i]] + '" alt="' + alts[ma[i]] + '" class="image"> \
+    		<div class="overlay"> \
+    		<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">' + likes[ma[i]] + 
+    		'</i></div> \
+    		<div class="overlay-description">Author: ' + authors[ma[i]] + ' </div> </div> </div>';
+    	}
+    }
+	//add modal zoomed img on click
+	var n = document.getElementsByClassName('container').length
+	var modalImg = document.getElementsByClassName("modal-content")[0];
+	var span = document.getElementsByClassName("close")[0];
+	var modal = document.getElementsByClassName('modal')[0];
 
-//add modal zoomed img on click
-var n = document.getElementsByClassName('container').length
-var modalImg = document.getElementsByClassName("modal-content")[0];
-var span = document.getElementsByClassName("close")[0];
-var modal = document.getElementsByClassName('modal')[0];
+	for(var i=0; i<n; i++){
 
-for(var i=0; i<n; i++){
+		var img = document.getElementsByClassName('image')[i];
+		let modalW, modalH
+		let ratio
+		if(flag == 1)
+			ratio = heights[(page-1)*records_per_page+i]/widths[(page-1)*records_per_page+i]
+		if(flag==2)
+			ratio = heights[ma[i]]/widths[ma[i]]
 
-	var img = document.getElementsByClassName('image')[i];
-	let modalW, modalH
-	let ratio = heights[(page-1)*records_per_page+i]/widths[(page-1)*records_per_page+i]
-
-	//calculating aspect ratio and w/h for modal image
+	// calculating aspect ratio and w/h for modal image
 	if(ratio<=1){
 		if(x>1200)
 			modalW = x*0.6
@@ -237,21 +266,20 @@ for(var i=0; i<n; i++){
 		if(modalW > x){
 			modalW = x*0.85
 			modalH = modalW*ratio
+
 		}
 	}
 
 	img.onclick = function(){
 		if(ratio>1){
-			if(modalW==x*0.85)
-				modalImg.style.margin = "20% auto 0"
-			else
-				modalImg.style.margin="0 auto"
+			modalImg.style.margin="0 auto"
+			console.log(ratio)
 		}
 		else{
-			if(window.innerWidth < 1000)
+			if(x < 1000)
 				modalImg.style.margin="50% auto"
 			else
-				modalImg.style.margin="5% auto"
+				modalImg.style.margin="7% auto 0"
 		}
 		modal.style.display = "block";
 		modalImg.style.width = modalW+"px"
@@ -287,8 +315,8 @@ for(var i=0; i<n; i++){
 
 	var l = document.getElementsByClassName("modal-left")[0];
 	var r = document.getElementsByClassName("modal-right")[0];
-
 	l.onclick = function(){
+
 		var src = modalImg.src.split("/")
 		var imageNumber = parseInt(src[10].split(".")[0])
 		imageNumber-=1
@@ -322,16 +350,13 @@ for(var i=0; i<n; i++){
 		modalImg.style.width = modalW + "px"
 		modalImg.style.height = modalH + "px"
 		if(ratio>1){
-			if(modalW==x*0.85)
-				modalImg.style.margin = "20% auto 0"
-			else
-				modalImg.style.margin="0 auto"
+			modalImg.style.margin="0 auto"
 		}
 		else{
-			if(window.innerWidth < 1000)
+			if(x < 1000)
 				modalImg.style.margin="50% auto"
 			else
-				modalImg.style.margin="5% auto"
+				modalImg.style.margin="7% auto 0"
 		}
 		modalImg.src = newSrc
 	}
@@ -370,20 +395,19 @@ for(var i=0; i<n; i++){
 		modalImg.style.width = modalW + "px"
 		modalImg.style.height = modalH + "px"
 		if(ratio>1){
-			if(modalW==x*0.85)
-				modalImg.style.margin = "20% auto 0"
-			else
-				modalImg.style.margin="0 auto"
+			modalImg.style.margin="0 auto"
 		}
 		else{
-			if(window.innerWidth < 1000)
+			if(x < 1000)
 				modalImg.style.margin="50% auto"
 			else
-				modalImg.style.margin="5% auto"
+				modalImg.style.margin="7% auto 0"
 		}
 		modalImg.src = newSrc	
 		
 	}	
+
+
 })();
 
 
@@ -400,7 +424,20 @@ if (page == num) {
 } else {
 	btn_next.style.visibility = "visible";
 }
-}
+} //end of func
+
+
+// var matchesArray = []
+$('#search-field').on('input', function(){
+	var matchesArray = []
+	for(var i=0; i<len;i++){
+		if(new RegExp($('#search-field').val()).test(authors[i]))
+			matchesArray.push(i)
+	}
+	changePage(1, 2, matchesArray)
+})
+
+
 
 function numPages()
 {
@@ -408,7 +445,7 @@ function numPages()
 }
 
 window.onload = function() {
-	changePage(1);
+	changePage(1, 1, 0);
 };
 
 
@@ -454,7 +491,7 @@ function loadMap() {
 
 //social sharing
 
-Share = {
+var Share = {
 	facebook: function(purl, ptitle, pimg, text) {
 		url  = 'http://www.facebook.com/sharer.php?s=100';
 		url += '&p[title]='     + encodeURIComponent(ptitle);
