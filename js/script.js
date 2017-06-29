@@ -1,10 +1,4 @@
 "use strict";
-
-$('.btn').on('click', function(){
-	alert($(this).html())
-})
-
-
 // preloader till content is loaded
 $(window).on('load', function() {
 		// Animate loader off screen
@@ -214,23 +208,23 @@ function changePage(page, flag, ma)
     if (page < 1) page = 1;
     if (page > num) page = num;
 
+    if(!$('#search-field').val()){
+    	$("#pagination").css('display', 'block')
+    	$('.modal-left').css('display', 'block')
+    	$('.modal-right').css('display', 'block')
+    }
     if(flag==2){
     	$('#pagination').css('display', 'none')
     	$('.modal-left').css('display', 'none')
     	$('.modal-right').css('display', 'none')
     }
-    if(!$('#search-field').val()){
-    	$("#pagination").css('display', 'block')
-    	$('.modal-left').css('display', 'block')
-    	$('.modal-right').css('display', 'block')
-    	flag = 1
-    }
+
 
     //create gallery
     gallery.innerHTML = "";
     if(flag == 1){
     	for (var i = (page-1) * records_per_page; i < (page * records_per_page) && i < len; i++) {
-    		var keyString = ""
+    		var keyString = " "
     		for(var j=0;j<keywords[i].length; j++){
     			keyString += keywords[i][j] + " "
     		}
@@ -254,6 +248,10 @@ function changePage(page, flag, ma)
     		<div class="overlay-description">Author: ' + authors[ma[i]] + ' </div> </div> </div>';
     	}
     }
+
+
+    
+
 	//add modal zoomed img on click
 	var n = document.getElementsByClassName('container').length
 	var modalImg = document.getElementsByClassName("modal-content")[0];
@@ -329,6 +327,10 @@ function changePage(page, flag, ma)
 
 	}
 }
+
+
+
+
 
 //change modal on right/left button clicks
 (function changeModal(){
@@ -454,7 +456,7 @@ if (page == num) {
 } //end of func
 
 
-// var matchesArray = []
+//search
 $('#search-field').on('input', function(){
 	var matchesArray = []
 	for(var i=0; i<len;i++){
@@ -462,7 +464,35 @@ $('#search-field').on('input', function(){
 			matchesArray.push(i)
 	}
 	changePage(1, 2, matchesArray)
+	if(!$('#search-field').val()){
+		$("#pagination").css('display', 'block')
+		$('.modal-left').css('display', 'block')
+		$('.modal-right').css('display', 'block')
+		changePage(1,1,0)
+	}
+
 })
+
+//sort
+$('.btn-sort').on('click', function(){
+	 $("#gallery").fadeTo(100, 0.2);
+	var value = $(this).html().toLowerCase()
+	var matchesArray = []
+	if($(this).html().toLowerCase() == 'all'){
+		changePage(1,1,0)
+	}
+	else{
+		for(var i=0; i<len;i++){
+			if(keywords[i].some(function(x){
+				return(x==value)
+			}))
+				matchesArray.push(i)
+			}
+			changePage(1, 2, matchesArray)
+		}
+		 $("#gallery").fadeTo(1000, 1);
+	})
+
 
 
 
