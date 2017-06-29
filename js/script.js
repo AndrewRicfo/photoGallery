@@ -1,3 +1,5 @@
+//not workin, with newImg
+
 "use strict";
 // preloader till content is loaded
 $(window).on('load', function() {
@@ -114,9 +116,6 @@ $(window).scroll(function() {
 	}
 });
 
-
-
-
 // slider
 var slideIndex = 0;
 var time1
@@ -129,7 +128,6 @@ function plusSlide(n) {
 	clearTimeout(time1)
 	time1 = setTimeout(carousel, 4000); 
 }
-
 
 function carousel() {
 	var i;
@@ -145,7 +143,6 @@ function carousel() {
 	time1 = setTimeout(carousel, 4000); 
 
 }
-
 
 function showSlide(n) {
 	var i;
@@ -288,26 +285,31 @@ function changePage(page, flag, ma)
 	}
 
 	img.onclick = function(){
+		let newImg = new Image(modalW, modalH)
 		if(ratio>1){
 			if(modalW == x*0.85)
-				modalImg.style.margin="25% auto"
+				newImg.style.margin="25% auto"
 			else
-				modalImg.style.margin="0 auto"
+				newImg.style.margin="0 auto"
 		}
 		else{
 			if(x < 1000)
-				modalImg.style.margin="50% auto"
+				newImg.style.margin="50% auto"
 			else
-				modalImg.style.margin="7% auto 0"
+				newImg.style.margin="7% auto 0"
 		}
 		modal.style.display = "block";
-		modalImg.style.width = modalW+"px"
-		modalImg.style.height = modalH+"px"
-		var src = this.src.split("/")
-		var imageNumber = parseInt(src[10].split(".")[0].split("-")[1])
-		src[9] = "full"
-		src[10] = imageNumber + ".jpg"
-		var newSrc = src.join("/")	
+		// modalImg.style.width = modalW+"px"
+		// modalImg.style.height = modalH+"px"
+		var src = this.src.split('.jpg')
+		src = src[0].split('/')
+		var imageNumber = parseInt(src[src.length-1].split('-')[1])
+		src[src.length-2] = "full"
+		src[src.length-1] = imageNumber + ".jpg"
+		var newSrc = src.join("/")
+		newImg.src = newSrc
+		newImg.className += "modal-content"
+		$(".modal-content").first().replaceWith(newImg)
 		modalImg.src = newSrc
 
 		$('body').css("overflow", "hidden")
@@ -339,26 +341,25 @@ function changePage(page, flag, ma)
 	var l = document.getElementsByClassName("modal-left")[0];
 	var r = document.getElementsByClassName("modal-right")[0];
 	l.onclick = function(){
-
-		var src = modalImg.src.split("/")
-		var imageNumber = parseInt(src[10].split(".")[0])
+		var src = modalImg.src.split(".jpg")
+		src = src[0].split("/")
+		var imageNumber = parseInt(src[src.length-1])
 		imageNumber-=1
 		//loop images only inside of one page
 		if(imageNumber==(page-1)*records_per_page && n==records_per_page)
 			imageNumber = page*records_per_page
 		if(imageNumber==(page-1)*records_per_page && n!=records_per_page)
 			imageNumber = (page-1)*records_per_page + n
-		src[10] = imageNumber + ".jpg"
+		src[src.length-1] = imageNumber + ".jpg"
 		var newSrc = src.join("/")	
-
-		let modalW, modalH
-		let ratio = heights[imageNumber-1]/widths[imageNumber-1]
+		var modalW, modalH
+		var ratio = heights[imageNumber-1]/widths[imageNumber-1]
 
 		if(ratio<=1){
 			if(x>1200)
 				modalW = x*0.6
 			if(x>=800 && x<=1200)
-				modalW =  x*0.7
+				modalW = x*0.7
 			if(x<800)
 				modalW = x*0.8
 			modalH = modalW*ratio
@@ -370,37 +371,42 @@ function changePage(page, flag, ma)
 				modalH = modalW*ratio
 			}
 		}
-		modalImg.style.width = modalW + "px"
-		modalImg.style.height = modalH + "px"
+		var newImg = new Image(modalW, modalH)
+		// newImg.style.width = modalW + "px"
+		// newImg.style.height = modalH + "px"
 		if(ratio>1){
 			if(modalW == x*0.85)
-				modalImg.style.margin="25% auto"
+				newImg.style.margin="25% auto"
 			else
-				modalImg.style.margin="0 auto"
+				newImg.style.margin="0 auto"
 		}
 		else{
 			if(x < 1000)
-				modalImg.style.margin="50% auto"
+				newImg.style.margin="50% auto"
 			else
-				modalImg.style.margin="7% auto 0"
+				newImg.style.margin="7% auto 0"
 		}
 		modalImg.src = newSrc
+		newImg.src = newSrc
+		newImg.className += "modal-content"
+		$(".modal-content").first().replaceWith(newImg)
 	}
 
 	r.onclick = function(){
-		var src = modalImg.src.split("/")
-		var imageNumber = parseInt(src[10].split(".")[0])
+		var src = modalImg.src.split(".jpg")
+		src = src[0].split("/")
+		var imageNumber = parseInt(src[src.length-1])
 		imageNumber+=1
 		//loop images only inside of one page
 		if(imageNumber==page*records_per_page+1 && n==records_per_page)
 			imageNumber = (page-1)*records_per_page+1
 		if(imageNumber==(page-1)*records_per_page+n+1 && n!=records_per_page)
 			imageNumber = (page-1)*records_per_page+1
-		src[10] = imageNumber + ".jpg"
+		src[src.length-1] = imageNumber + ".jpg"
 		var newSrc = src.join("/")	
 
-		let modalW, modalH
-		let ratio = heights[imageNumber-1]/widths[imageNumber-1]
+		var modalW, modalH
+		var ratio = heights[imageNumber-1]/widths[imageNumber-1]
 		
 		if(ratio<=1){
 			if(x>1200)
@@ -418,22 +424,26 @@ function changePage(page, flag, ma)
 				modalH = modalW*ratio
 			}
 		}
-		modalImg.style.width = modalW + "px"
-		modalImg.style.height = modalH + "px"
+		var newImg = new Image(modalW, modalH)
+
+		newImg.style.width = modalW + "px"
+		newImg.style.height = modalH + "px"
 		if(ratio>1){
 			if(modalW == x*0.85)
-				modalImg.style.margin="25% auto"
+				newImg.style.margin="25% auto"
 			else
-				modalImg.style.margin="0 auto"
+				newImg.style.margin="0 auto"
 		}
 		else{
 			if(x < 1000)
-				modalImg.style.margin="50% auto"
+				newImg.style.margin="50% auto"
 			else
-				modalImg.style.margin="7% auto 0"
+				newImg.style.margin="7% auto 0"
 		}
-		modalImg.src = newSrc	
-		
+		modalImg.src = newSrc
+		newImg.src = newSrc	
+		newImg.className += "modal-content"
+		$(".modal-content").first().replaceWith(newImg)
 	}	
 
 
@@ -460,7 +470,7 @@ if (page == num) {
 $('#search-field').on('input', function(){
 	var matchesArray = []
 	for(var i=0; i<len;i++){
-		if(new RegExp($('#search-field').val()).test(authors[i]))
+		if(new RegExp($('#search-field').val(), 'i').test(authors[i]))
 			matchesArray.push(i)
 	}
 	changePage(1, 2, matchesArray)
@@ -475,7 +485,7 @@ $('#search-field').on('input', function(){
 
 //sort
 $('.btn-sort').on('click', function(){
-	 $("#gallery").fadeTo(100, 0.2);
+	$("#gallery").fadeTo(100, 0.2);
 	var value = $(this).html().toLowerCase()
 	var matchesArray = []
 	if($(this).html().toLowerCase() == 'all'){
@@ -490,7 +500,7 @@ $('.btn-sort').on('click', function(){
 			}
 			changePage(1, 2, matchesArray)
 		}
-		 $("#gallery").fadeTo(1000, 1);
+		$("#gallery").fadeTo(500, 1);
 	})
 
 
@@ -590,3 +600,21 @@ var Share = {
 	}
 };
 
+$(".nav-item.btn").first().on('click', function(evt){
+	$(this).toggleClass("toggled")
+	if($(this).hasClass("toggled")){
+		$(".nav-modal").css('display', 'block')
+		$(".nav-item.btn").first().html("Close")
+	}
+	else{
+		$(".nav-modal").css('display', 'none')
+		$(".nav-item.btn").first().html("Register")
+	}
+	
+})
+
+$("#btn-reg").on('click', function(evt){
+
+	if($("input[name^=reg]").val() != '')
+		$(".nav-modal").css('display', 'none')
+})

@@ -27,16 +27,33 @@
 
 
 		<div class="nav-right clearfix">
-			<a href="#"><div class="nav-item btn">Register</div></a>
-			<a href="#"><div class="nav-item btn">Log in</div></a>
+			<div class="nav-item btn">
+				Register
+			</div>
+			<div class="nav-modal">
+				<form action="">
+					<input type="email" name="reg-email" placeholder="EMAIL" required>
+					<input type="password" name="reg-pw1" placeholder="PASSWORD" required>
+					<input type="password" name="reg-pw2" placeholder="PASSWORD REPEAT" required><br>
+					<button class="btn" id="btn-reg">Go on!</button>
+				</form>
+
+			</div>
+
+			<div class="nav-item btn">
+				Log out
+
+			</div>
 		</div>
 	</div>
 
 	<div class="slider" id="home">
 		<h1 class="first-screen-text">Andrew's photogallery</h1>
-		<a href="#gallery"><div class="display-down bounce">
-			<i class="fa fa-angle-down" aria-hidden="true"></i>
-		</div></a>
+		<a href="#gallery">
+			<div class="display-down bounce">
+				<i class="fa fa-angle-down" aria-hidden="true"></i>
+			</div>
+		</a>
 		<img class="mySlides fade" src="images/sl-5.jpg">
 		<img class="mySlides fade" src="images/sl-3.jpg">
 		<img class="mySlides fade" src="images/sl-2.jpg">
@@ -50,10 +67,10 @@
 
 	<div id="gallery-wrapper">
 		<div id="search-sort">
-		<input type="text" id="search-field" placeholder="Search author">
-		<button class="btn btn-sort">All</button>
-		<button class="btn btn-sort">Nature</button>
-		<button class="btn btn-sort">Beauty</button>
+			<input type="text" id="search-field" placeholder="Search author" title="search by author's name">
+			<button class="btn btn-sort" title="show all">All</button>
+			<button class="btn btn-sort" title="show nature">Nature</button>
+			<button class="btn btn-sort" title="show beaty">Beauty</button>
 		</div>
 
 		<div id="gallery">
@@ -102,7 +119,7 @@
 	<div class="row">
 		<h6 class="row-item row-item-3">+380 50 108 6504</h6>
 		<h6 class="row-item row-item-3">Kyiv, Kovalskyi lane, 5</h6>
-		<h6 class="row-item row-item-3">bloodfurry9595@ gmail.com</h6>
+		<h6 class="row-item row-item-3">bloodfurry9595@gmail.com</h6>
 	</div>
 
 	<div class="row">
@@ -118,6 +135,7 @@
 			<button class="btn submit clearfix">Send message</button>
 		</div>
 	</form>
+	<hr>
 
 </div>
 
