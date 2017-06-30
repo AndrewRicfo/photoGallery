@@ -44,10 +44,10 @@ var authors = []
 var likes = []
 var widths = []
 var heights = []
-var len = imgJSON.length;
 var keywords = []
+var len = imgJSON.length
 
-for(var i=0; i<len; i++){
+for(var i=0; i<imgJSON.length; i++){
 	sourcesTh.push(imgJSON[i].srcThumb)
 	sourcesFull.push(imgJSON[i].srcFull)
 	alts.push(imgJSON[i].alt)
@@ -78,7 +78,6 @@ $(document).scroll(function() {
 			$('.nav').css({"background-color": "rgba(0,0,0,0.6", "padding-top" : "2px", "height":"55px"})
 		else
 			$('.nav').css({"background-color": "rgba(0,0,0,0.6", "padding-top" : "2px", "height":"40px"})
-		$('.nav-divide').css("margin-top", "10px")
 
 
 	} else{
@@ -220,13 +219,17 @@ function changePage(page, flag, ma)
     //create gallery
     gallery.innerHTML = "";
     if(flag == 1){
-    	for (var i = (page-1) * records_per_page; i < (page * records_per_page) && i < len; i++) {
+    	for (var i = (page-1) * records_per_page; i < (page * records_per_page) && i < imgJSON.length; i++) {
     		var keyString = " "
-    		for(var j=0;j<keywords[i].length; j++){
-    			keyString += keywords[i][j] + " "
+    		if(keywords[i].length>=1){
+    			for(var j=0;j<keywords[i].length; j++){
+    				keyString += keywords[i][j] + " "
+    			}
+    			keyString = keyString.slice(0, keyString.length-1)
+    			if(i>=len){
+    				keyString += " upload"
+    			}
     		}
-    		keyString = keyString.slice(0, keyString.length-1)
-
     		gallery.innerHTML += '<div class="container"> \
     		<img src="' + sourcesTh[i] + '" alt="' + alts[i] + '" class="image' + keyString +'"> \
     		<div class="overlay"> \
@@ -255,7 +258,7 @@ function changePage(page, flag, ma)
 	var span = document.getElementsByClassName("close")[0];
 	var modal = document.getElementsByClassName('modal')[0];
 
-	for(var i=0; i<n; i++){
+	for(let i=0; i<n; i++){
 
 		var img = document.getElementsByClassName('image')[i];
 		let modalW, modalH
@@ -285,6 +288,7 @@ function changePage(page, flag, ma)
 	}
 
 	img.onclick = function(){
+		
 		let newImg = new Image(modalW, modalH)
 		if(ratio>1){
 			if(modalW == x*0.85)
@@ -299,34 +303,40 @@ function changePage(page, flag, ma)
 				newImg.style.margin="7% auto 0"
 		}
 		modal.style.display = "block";
-		// modalImg.style.width = modalW+"px"
-		// modalImg.style.height = modalH+"px"
-		var src = this.src.split('.jpg')
-		src = src[0].split('/')
-		var imageNumber = parseInt(src[src.length-1].split('-')[1])
-		src[src.length-2] = "full"
-		src[src.length-1] = imageNumber + ".jpg"
-		var newSrc = src.join("/")
+		if(!$(this).hasClass('upload')){
+			var src = this.src.split('.jpg')
+			src = src[0].split('/')
+			var imageNumber = parseInt(src[src.length-1].split('-')[1])
+			src[src.length-2] = "full"
+			src[src.length-1] = imageNumber + ".jpg"
+			var newSrc = src.join("/")
+		}
+		else{
+			newSrc = imgJSON[(page-1)*records_per_page+i].srcFull
+		}
 		newImg.src = newSrc
+
+
 		newImg.className += "modal-content"
 		$(".modal-content").first().replaceWith(newImg)
 		modalImg.src = newSrc
 
 		$('body').css("overflow", "hidden")
 		$('.nav').css("display", "none")
-	}
 
-	modalImg.onclick = function() { 
-		modal.style.display = "none";
-		$('body').css("overflow", "auto")
-		$('.nav').css("display", "block")
-	}
 
-	span.onclick = function() { 
-		modal.style.display = "none";
-		$('body').css("overflow", "auto")
-		$('.nav').css("display", "block")
+		modalImg.onclick = function() { 
+			modal.style.display = "none";
+			$('body').css("overflow", "auto")
+			$('.nav').css("display", "block")
+		}
 
+		span.onclick = function() { 
+			modal.style.display = "none";
+			$('body').css("overflow", "auto")
+			$('.nav').css("display", "block")
+
+		}
 	}
 }
 
@@ -336,8 +346,6 @@ function changePage(page, flag, ma)
 
 //change modal on right/left button clicks
 (function changeModal(){
-	var i;
-
 	var l = document.getElementsByClassName("modal-left")[0];
 	var r = document.getElementsByClassName("modal-right")[0];
 	l.onclick = function(){
@@ -372,8 +380,6 @@ function changePage(page, flag, ma)
 			}
 		}
 		var newImg = new Image(modalW, modalH)
-		// newImg.style.width = modalW + "px"
-		// newImg.style.height = modalH + "px"
 		if(ratio>1){
 			if(modalW == x*0.85)
 				newImg.style.margin="25% auto"
@@ -469,7 +475,7 @@ if (page == num) {
 //search
 $('#search-field').on('input', function(){
 	var matchesArray = []
-	for(var i=0; i<len;i++){
+	for(var i=0; i<imgJSON.length;i++){
 		if(new RegExp($('#search-field').val(), 'i').test(authors[i]))
 			matchesArray.push(i)
 	}
@@ -485,22 +491,29 @@ $('#search-field').on('input', function(){
 
 //sort
 $('.btn-sort').on('click', function(){
-	$("#gallery").fadeTo(100, 0.2);
-	var value = $(this).html().toLowerCase()
-	var matchesArray = []
-	if($(this).html().toLowerCase() == 'all'){
-		changePage(1,1,0)
-	}
+	if($(this).hasClass('upload'))
+		return 
 	else{
-		for(var i=0; i<len;i++){
-			if(keywords[i].some(function(x){
-				return(x==value)
-			}))
-				matchesArray.push(i)
-			}
-			changePage(1, 2, matchesArray)
+		$("#gallery").fadeTo(100, 0.2);
+		var value = $(this).html().toLowerCase()
+		var matchesArray = []
+		if($(this).html().toLowerCase() == 'all'){
+			$(".btn.btn-sort.upload").css('display', 'inline-block')
+			changePage(current_page,1,0)
 		}
-		$("#gallery").fadeTo(500, 1);
+		else{
+			$(".btn.btn-sort.upload").css('display', 'none')
+			for(var i=0; i<imgJSON.length;i++){
+				if(keywords[i].some(function(x){
+					return(x==value)
+				}))
+					matchesArray.push(i)
+				}
+				changePage(1, 2, matchesArray)
+			}
+			$("#gallery").fadeTo(500, 1);
+
+		}
 	})
 
 
@@ -508,7 +521,7 @@ $('.btn-sort').on('click', function(){
 
 function numPages()
 {
-	return Math.ceil(len / records_per_page);
+	return Math.ceil(imgJSON.length / records_per_page);
 }
 
 window.onload = function() {
@@ -618,3 +631,120 @@ $("#btn-reg").on('click', function(evt){
 	if($("input[name^=reg]").val() != '')
 		$(".nav-modal").css('display', 'none')
 })
+
+
+// image upload
+var _URL = window.URL || window.webkitURL;
+$("#file").change(function(e) {
+
+	var image, file
+
+	if ((file = this.files[0])) {
+
+		image = new Image()
+		image.onload = function() {
+
+			var newImage = new Image(this.width*0.3, this.height*0.3)
+			newImage.src = _URL.createObjectURL(file)
+
+			var imgObj = {}
+			imgObj.srcThumb = _URL.createObjectURL(file)
+			imgObj.srcFull = _URL.createObjectURL(file)
+			imgObj.alt = "uploaded photo description"
+			imgObj.author = "Andrew"
+			imgObj.likes = 0
+			imgObj.width = this.width
+			imgObj.height = this.height
+			imgObj.keywords = ["nature"]
+			imgJSON.push(imgObj)
+
+			sourcesTh.push(_URL.createObjectURL(file))
+			sourcesFull.push(_URL.createObjectURL(file))
+			alts.push(imgObj.alt)
+			authors.push(imgObj.author)
+			likes.push(imgObj.likes)
+			widths.push(imgObj.width)
+			heights.push(imgObj.height)
+			keywords.push(imgObj.keywords)
+			newImage.className += "image upload"
+
+			if(page.innerHTML.split('/')[0]==numPages()){
+				$('.modal-left').css('display', 'none')
+				$('.modal-right').css('display', 'none')
+
+				$('.container').last().after('<div class="container"> \
+					<img src="' + sourcesTh[imgJSON.length-1] + '" alt="' + alts[imgJSON.length-1] + '" class="image upload"> \
+					<div class="overlay"> \
+					<div class="overlay-rate"><i class="fa fa-heart-o" aria-hidden="true">' + likes[imgJSON.length-1] + 
+					'</i></div> \
+					<div class="overlay-description">Author: ' + authors[imgJSON.length-1] + ' </div> </div> </div>')
+			}
+
+			$('.image.upload').last().on('click', function(){
+				var ratio, modalH, modalW, newSrc
+				ratio = heights[imgJSON.length-1]/widths[imgJSON.length-1]
+				if(ratio<=1){
+					if(x>1200)
+						modalW = x*0.6
+					if(x>=800 && x<=1200)
+						modalW = x*0.7
+					if(x<800)
+						modalW = x*0.8
+					modalH = modalW*ratio
+				}else{
+					modalH = y
+					modalW = modalH/ratio
+					if(modalW > x){
+						modalW = x*0.85
+						modalH = modalW*ratio
+					}
+				}
+				console.log(x, y, ratio, modalW, modalH)
+
+
+
+				let newImg = new Image(modalW, modalH)
+				if(ratio>1){
+					if(modalW == x*0.85)
+						newImg.style.margin="25% auto"
+					else
+						newImg.style.margin="0 auto"
+				}
+				else{
+					if(x < 1000)
+						newImg.style.margin="50% auto"
+					else
+						newImg.style.margin="7% auto 0"
+				}
+				$('.modal').css('display', 'block')
+				newSrc = imgJSON[imgJSON.length-1].srcFull
+				newImg.src = newSrc
+
+				newImg.className += "modal-content"
+				$(".modal-content").first().replaceWith(newImg)
+
+				$('body').css("overflow", "hidden")
+				$('.nav').css("display", "none")
+
+
+				$('.modal-content').on('click', function() { 
+					$('.modal').css('display', 'none')
+					$('body').css("overflow", "auto")
+					$('.nav').css("display", "block")
+
+				})
+
+				$('.close').on('click', function() { 
+					$('.modal').css('display', 'none')
+					$('body').css("overflow", "auto")
+					$('.nav').css("display", "block")
+					$('.modal-left').css('display', 'block')
+					$('.modal-right').css('display', 'block')
+				})
+			})
+		};
+
+		image.src = _URL.createObjectURL(file)
+	}
+
+});

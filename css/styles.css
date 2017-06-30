@@ -128,7 +128,7 @@ table {
 
 .nav-center{
 	display: inline-block;
-	margin-left: 18%;
+	margin-left: 25%;
 }
 
 .nav-right{
@@ -154,6 +154,7 @@ table {
 	height: 1.3vw;
 	width: 0;
 	padding: 0;
+	margin-top: 10px;
 }
 
 .btn{
@@ -167,7 +168,6 @@ table {
 	font-weight: normal;
 	text-decoration: none;
 	cursor: pointer;
-	display: inline-block;
 	line-height: normal;
 	border: 1px solid;
 	overflow:hidden;
@@ -380,14 +380,6 @@ h2{
 
 /*gallery start*/
 
-#search-btn{
-	display: inline-block;
-	border: 1px solid rgba(0,0,0,0.7);
-}
-
-#search-btn:hover{
-	cursor: pointer;
-}
 
 #search-field{
 	margin: 4% 0 0 1rem;
@@ -654,6 +646,13 @@ input, textarea{
 	outline: 0;
 }
 
+input[type=file]{
+	margin: 0;
+	padding: 0;
+	width: auto;
+	z-index:500;
+}
+
 input[name^=reg]{
 	max-width: 70%;
 }
@@ -783,12 +782,19 @@ textarea{
 		padding: 0 2vw;
 
 	}
+	.nav-center{
+		margin-left: 33% !important;
+	}
 	.nav-divide{
 		height: 10px;
 		padding: 0;
 	}
 	.btn {
 		padding: 5px;
+	}
+	#search-field{
+		width: 30%;
+		margin-left: 1.2rem;
 	}
 
 	.row-item-3{
@@ -806,7 +812,7 @@ textarea{
 		column-count:         1;
 	}	
 	.nav-center{
-		margin-left: 4%;
+		margin-left: 4% !important;
 	}
 	.nav-divide{
 		height: 10px;
@@ -833,14 +839,14 @@ textarea{
 	input, textarea{
 		width: 70px;
 	}
-	#search-field{
-		width: 50%;
+	.btn{
+		font-size: 0.7rem;
 	}
 }
 
 @media screen and (min-width:0) and (min-resolution: +72dpi) {
 	body{
-		overflow-x: hidden;
+		overflow-x: hidden !important;
 	}
 	.modal-content{
 		overflow:hidden;
