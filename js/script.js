@@ -348,6 +348,14 @@ function changePage(page, flag, ma)
 (function changeModal(){
 	var l = document.getElementsByClassName("modal-left")[0];
 	var r = document.getElementsByClassName("modal-right")[0];
+	$('.image.upload').on('click', function(){
+		$('.modal-left').css('display', 'none')
+		$('.modal-right').css('display', 'none')
+	})
+	$('.close').on('click', function(){
+		$('.modal-left').css('display', 'block')
+		$('.modal-right').css('display', 'block')
+	})
 	l.onclick = function(){
 		var src = modalImg.src.split(".jpg")
 		src = src[0].split("/")
@@ -451,8 +459,6 @@ function changePage(page, flag, ma)
 		newImg.className += "modal-content"
 		$(".modal-content").first().replaceWith(newImg)
 	}	
-
-
 })();
 
 
@@ -669,8 +675,6 @@ $("#file").change(function(e) {
 			newImage.className += "image upload"
 
 			if(page.innerHTML.split('/')[0]==numPages()){
-				$('.modal-left').css('display', 'none')
-				$('.modal-right').css('display', 'none')
 
 				$('.container').last().after('<div class="container"> \
 					<img src="' + sourcesTh[imgJSON.length-1] + '" alt="' + alts[imgJSON.length-1] + '" class="image upload"> \
@@ -681,6 +685,9 @@ $("#file").change(function(e) {
 			}
 
 			$('.image.upload').last().on('click', function(){
+				$('.modal-left').css('display', 'none')
+				$('.modal-right').css('display', 'none')
+
 				var ratio, modalH, modalW, newSrc
 				ratio = heights[imgJSON.length-1]/widths[imgJSON.length-1]
 				if(ratio<=1){
@@ -725,6 +732,8 @@ $("#file").change(function(e) {
 
 				$('body').css("overflow", "hidden")
 				$('.nav').css("display", "none")
+
+
 
 
 				$('.modal-content').on('click', function() { 
