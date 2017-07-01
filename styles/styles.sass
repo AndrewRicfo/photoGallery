@@ -74,6 +74,7 @@ time, mark, audio, video
   font-size: 100%
   font: inherit
   vertical-align: baseline
+  box-sizing: border-box
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -118,7 +119,7 @@ table
   position: fixed
   z-index: 997
   width: 100vw
-  height: 55px
+  height: auto
   padding-top: 20px
   a
     outline: none
@@ -131,12 +132,14 @@ table
 
 .nav-center
   display: inline-block
-  margin-left: 25%
+  height: inherit
+  +transform(translate(45%, 50%))
   a:hover
     color: $blue
   @media all and (max-width: 1000px)
     margin-left: 33% !important
   @media all and (max-width: 800px)
+    +transform(translate(0))
     margin-left: 4% !important
 
 .dropdown
@@ -190,7 +193,7 @@ table
 
 .login
   @media all and (max-width: 800px)
-    margin-right: 25px
+    margin-right: 15px
 
 .nav-divide
   border: 1px solid #fff
@@ -204,6 +207,8 @@ table
     height: 10px
 
 .btn
+  font-family: 'Open Sans', sans-serif
+  font-weight: 300
   padding: .5rem 1rem
   background-color: $lgray
   margin: 5px
@@ -216,8 +221,8 @@ table
   cursor: pointer
   line-height: normal
   border: 1px solid
-  overflow:hidden
-  white-space:nowrap
+  overflow: hidden
+  white-space: nowrap
   outline: none
   &:hover
     background-color: $blue
@@ -245,17 +250,15 @@ h2
 .first-screen-text
   font-family: 'Montserrat', sans-serif !important
   font-weight: 900
-  font-size: 3vw
+  font-size: 4vw
   text-align: center
   color: $white
   position: absolute
-  top: 50%
+  top: 40%
   left: 50%
   transform: translate(-50%, -50%)
   z-index: 990
-  padding: 3vw
-  line-height: 65px
-  letter-spacing: 0
+  line-height: 4vw
   text-transform: none
 
 .display-right
@@ -288,12 +291,13 @@ h2
   width: 100%
   height: 100vh
   position: relative
+  object-fit: cover
 
 .slider
   position: relative
   &:after
     content: ""
-    background: rgba(0,0,0,0.35)
+    background: $sblack
     position: absolute
     top: 0
     left: 0
@@ -327,7 +331,7 @@ h2
 
 .display-down
   position: fixed
-  bottom: 0
+  bottom: -10px
   left: 50%
   margin-left: -20px
   width: 40px
@@ -370,7 +374,7 @@ h2
 #gallery
   line-height: 0
   width: 100%
-  padding: 1rem 1rem 5%
+  padding: 1rem 1rem 5% 1rem
   background-color: $white
   -webkit-column-count: 5
   -webkit-column-gap:   1rem
@@ -585,6 +589,10 @@ input
     width: auto
     z-index: 500
   &[name^=reg]
+    border-right-style: none
+    border-left-style: none
+    border-top-style: none
+    border-bottom: 1px solid $mblack
     max-width: 70%
 
 textarea

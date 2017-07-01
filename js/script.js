@@ -75,9 +75,9 @@ $(document).scroll(function() {
 
 	if($(window).scrollTop() > y-50){
 		if(x>1200)
-			$('.nav').css({"background-color": "rgba(0,0,0,0.6", "padding-top" : "2px", "height":"55px"})
+			$('.nav').css({"background-color": "rgba(0,0,0,0.6", "padding-top" : "2px"})
 		else
-			$('.nav').css({"background-color": "rgba(0,0,0,0.6", "padding-top" : "2px", "height":"40px"})
+			$('.nav').css({"background-color": "rgba(0,0,0,0.6", "padding-top" : "2px"})
 
 
 	} else{
