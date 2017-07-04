@@ -98,6 +98,8 @@ q:before, q:after
 table
   border-collapse: collapse
   border-spacing: 0
+/*end of css rest*/
+
 
 .preloader
   position: fixed
@@ -137,10 +139,9 @@ table
   a:hover
     color: $blue
   @media all and (max-width: 1000px)
-    margin-left: 33% !important
+    margin-left: 4% !important
   @media all and (max-width: 800px)
     +transform(translate(0))
-    margin-left: 4% !important
 
 .dropdown
   outline: none
@@ -254,7 +255,7 @@ h2
   text-align: center
   color: $white
   position: absolute
-  top: 40%
+  top: 50%
   left: 50%
   transform: translate(-50%, -50%)
   z-index: 990
@@ -331,7 +332,7 @@ h2
 
 .display-down
   position: fixed
-  bottom: -10px
+  bottom: 10px
   left: 50%
   margin-left: -20px
   width: 40px
@@ -489,6 +490,7 @@ _:-moz-tree-row(hover), .overlay-description
     color: $hover-color
     text-decoration: none
     cursor: pointer
+    background-color: $lblack
   &:focus
     @extend .close:hover
 

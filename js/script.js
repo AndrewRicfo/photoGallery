@@ -1,12 +1,17 @@
-//not workin, with newImg
+// when click modal-right/left, use .entries() to get imageNumber
+
+// var arr = ['a', 'b', 'c'].entries()
+// arr.next().value     *n times
+//---------
+// index = srcFull.indexOf(src)
+// then get value of this index on .entries
 
 "use strict";
+
 // preloader till content is loaded
 $(window).on('load', function() {
-		// Animate loader off screen
-		$(".preloader").fadeOut("slow");;
-	});
-
+	$(".preloader").fadeOut("slow");;
+});
 
 $('.dropdown-content').on('mouseenter', function(){
 	$('.dropdown').toggleClass('active')
@@ -26,7 +31,7 @@ var imgJSON = $.ajax({
 	dataType: 'json',
 	context: document.body,
 	global: false,
-	async:false,
+	async:false,  //required. the one of the reasons why this trick works
 	success: function(result) {
 		return result;
 	},
@@ -36,18 +41,15 @@ var imgJSON = $.ajax({
 imgJSON = $.parseJSON(imgJSON)
 
 //collect all info from json
-var allImages = ""
-var sourcesTh = []
-var sourcesFull = []
-var alts = []
-var authors = []
-var likes = []
-var widths = []
-var heights = []
-var keywords = []
-var len = imgJSON.length
+var allImages = "", sourcesTh = [], sourcesFull = [], alts = [],
+authors = [],
+likes = [],
+widths = [],
+heights = [],
+keywords = [],
+len = imgJSON.length
 
-for(var i=0; i<imgJSON.length; i++){
+for(var i=0, l=imgJSON.length; i<l; i++){
 	sourcesTh.push(imgJSON[i].srcThumb)
 	sourcesFull.push(imgJSON[i].srcFull)
 	alts.push(imgJSON[i].alt)
@@ -57,8 +59,6 @@ for(var i=0; i<imgJSON.length; i++){
 	heights.push(imgJSON[i].height)
 	keywords.push(imgJSON[i].keywords)
 }
-
-
 
 // nav
 var w = window,
@@ -80,7 +80,7 @@ $(document).scroll(function() {
 			$('.nav').css({"background-color": "rgba(0,0,0,0.6", "padding-top" : "2px"})
 
 
-	} else{
+	}else{
 		$('.nav').css({"background-color":"transparent", "padding-top":"20px"})
 
 	}
@@ -97,8 +97,6 @@ $(document).on('click', 'a', function(event){
 });
 
 $(window).scroll(function() {
-
-
 	if ($(this).scrollTop() >= $('#home').offset().top - 50) {
 		$('.nav a').removeClass('active');
 		$('.dropdown').removeClass('active');
@@ -131,7 +129,7 @@ function plusSlide(n) {
 function carousel() {
 	var i;
 	var x = document.getElementsByClassName("mySlides");
-	for (i = 0; i < x.length; i++) {
+	for (i = 0, l=x.length; i < l; i++) {
 		x[i].style.display = "none"; 
 	}
 	slideIndex++;
@@ -144,10 +142,9 @@ function carousel() {
 }
 
 function showSlide(n) {
-	var i;
 	var x = document.getElementsByClassName("mySlides");
 
-	for (i = 0; i < x.length; i++) {
+	for (var i = 0, l=x.length; i < l; i++) {
 		x[i].style.display = "none"; 
 	}
 	if (n > x.length) {slideIndex = 1} 
@@ -170,7 +167,6 @@ $(document).scroll(function() {
 	}
 });
 
-
 // pagination
 var current_page = 1;
 var records_per_page = 10;
@@ -190,7 +186,6 @@ function nextPage()
 		changePage(current_page, 1, 0);
 	}
 }
-
 
 function changePage(page, flag, ma)
 {
@@ -215,14 +210,13 @@ function changePage(page, flag, ma)
     	$('.modal-right').css('display', 'none')
     }
 
-
     //create gallery
     gallery.innerHTML = "";
     if(flag == 1){
-    	for (var i = (page-1) * records_per_page; i < (page * records_per_page) && i < imgJSON.length; i++) {
+    	for (var i = (page-1) * records_per_page, l=imgJSON.length; i < (page * records_per_page) && i < l; i++) {
     		var keyString = " "
     		if(keywords[i].length>=1){
-    			for(var j=0;j<keywords[i].length; j++){
+    			for(var j=0, kl=keywords[i].length;j<kl; j++){
     				keyString += keywords[i][j] + " "
     			}
     			keyString = keyString.slice(0, keyString.length-1)
@@ -239,7 +233,7 @@ function changePage(page, flag, ma)
     	}
     }
     if(flag == 2){
-    	for (var i = 0;  i < ma.length; i++) {
+    	for (var i = 0, ml=ma.length;  i < ml; i++) {
     		gallery.innerHTML += '<div class="container"> \
     		<img src="' + sourcesTh[ma[i]] + '" alt="' + alts[ma[i]] + '" class="image"> \
     		<div class="overlay"> \
@@ -248,9 +242,6 @@ function changePage(page, flag, ma)
     		<div class="overlay-description">Author: ' + authors[ma[i]] + ' </div> </div> </div>';
     	}
     }
-
-
-    
 
 	//add modal zoomed img on click
 	var n = document.getElementsByClassName('container').length
@@ -316,14 +307,12 @@ function changePage(page, flag, ma)
 		}
 		newImg.src = newSrc
 
-
 		newImg.className += "modal-content"
 		$(".modal-content").first().replaceWith(newImg)
 		modalImg.src = newSrc
 
 		$('body').css("overflow", "hidden")
 		$('.nav').css("display", "none")
-
 
 		modalImg.onclick = function() { 
 			modal.style.display = "none";
@@ -339,10 +328,6 @@ function changePage(page, flag, ma)
 		}
 	}
 }
-
-
-
-
 
 //change modal on right/left button clicks
 (function changeModal(){
@@ -461,7 +446,6 @@ function changePage(page, flag, ma)
 	}	
 })();
 
-
 page_span.innerHTML = page + "/" + num;
 
 if (page == 1) {
@@ -475,13 +459,12 @@ if (page == num) {
 } else {
 	btn_next.style.visibility = "visible";
 }
-} //end of func
-
+} //end of changePage
 
 //search
 $('#search-field').on('input', function(){
 	var matchesArray = []
-	for(var i=0; i<imgJSON.length;i++){
+	for(var i=0, l=imgJSON.length; i<l; i++){
 		if(new RegExp($('#search-field').val(), 'i').test(authors[i]))
 			matchesArray.push(i)
 	}
@@ -509,7 +492,7 @@ $('.btn-sort').on('click', function(){
 		}
 		else{
 			$(".btn.btn-sort.upload").css('display', 'none')
-			for(var i=0; i<imgJSON.length;i++){
+			for(var i=0, l=imgJSON.length; i<l; i++){
 				if(keywords[i].some(function(x){
 					return(x==value)
 				}))
@@ -518,12 +501,8 @@ $('.btn-sort').on('click', function(){
 				changePage(1, 2, matchesArray)
 			}
 			$("#gallery").fadeTo(500, 1);
-
 		}
 	})
-
-
-
 
 function numPages()
 {
@@ -533,7 +512,6 @@ function numPages()
 window.onload = function() {
 	changePage(1, 1, 0);
 };
-
 
 //likes
 $(document).on('click', '.fa-heart-o', function(event){
@@ -571,12 +549,9 @@ function loadMap() {
 		map: map,
 		title: "gallery place"
 	});
-
 }
 
-
 //social sharing
-
 var Share = {
 	facebook: function(purl, ptitle, pimg, text) {
 		url  = 'http://www.facebook.com/sharer.php?s=100';
@@ -638,7 +613,6 @@ $("#btn-reg").on('click', function(evt){
 		$(".nav-modal").css('display', 'none')
 })
 
-
 // image upload
 var _URL = window.URL || window.webkitURL;
 $("#file").change(function(e) {
@@ -661,7 +635,7 @@ $("#file").change(function(e) {
 			imgObj.likes = 0
 			imgObj.width = this.width
 			imgObj.height = this.height
-			imgObj.keywords = ["nature"]
+			imgObj.keywords = []
 			imgJSON.push(imgObj)
 
 			sourcesTh.push(_URL.createObjectURL(file))
@@ -706,9 +680,6 @@ $("#file").change(function(e) {
 						modalH = modalW*ratio
 					}
 				}
-				console.log(x, y, ratio, modalW, modalH)
-
-
 
 				let newImg = new Image(modalW, modalH)
 				if(ratio>1){
@@ -733,14 +704,10 @@ $("#file").change(function(e) {
 				$('body').css("overflow", "hidden")
 				$('.nav').css("display", "none")
 
-
-
-
 				$('.modal-content').on('click', function() { 
 					$('.modal').css('display', 'none')
 					$('body').css("overflow", "auto")
 					$('.nav').css("display", "block")
-
 				})
 
 				$('.close').on('click', function() { 
@@ -752,8 +719,6 @@ $("#file").change(function(e) {
 				})
 			})
 		};
-
 		image.src = _URL.createObjectURL(file)
 	}
-
 });

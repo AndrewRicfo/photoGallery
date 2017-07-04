@@ -45,6 +45,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+/*end of css rest */
 .preloader {
   position: fixed;
   left: 0px;
@@ -86,14 +87,13 @@ table {
     color: #70aed2; }
   @media all and (max-width: 1000px) {
     .nav-center {
-      margin-left: 33% !important; } }
+      margin-left: 4% !important; } }
   @media all and (max-width: 800px) {
     .nav-center {
       -moz-transform: translate(0);
       -ms-transform: translate(0);
       -webkit-transform: translate(0);
-      transform: translate(0);
-      margin-left: 4% !important; } }
+      transform: translate(0); } }
 
 .dropdown {
   outline: none;
@@ -224,7 +224,7 @@ h2 {
   text-align: center;
   color: #fff;
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 990;
@@ -327,7 +327,7 @@ h2 {
     transform: translateY(-15px); } }
 .display-down {
   position: fixed;
-  bottom: -10px;
+  bottom: 10px;
   left: 50%;
   margin-left: -20px;
   width: 40px;
@@ -511,7 +511,8 @@ _:-moz-tree-row(hover), .overlay-description, .overlay-rate {
   .close:hover, .close:focus {
     color: #ddd;
     text-decoration: none;
-    cursor: pointer; }
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.2); }
 
 #pagination {
   text-align: center;
