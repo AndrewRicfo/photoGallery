@@ -35,12 +35,10 @@ Just open index.html file from repository with your browser.
 
 ### Desktop (1920p)
 
-![graph](/images/PC1.png)
-![graph](/images/PC2.png)
-![graph](/images/PC3.png)
+![graph](/images/pc.png)
 ![graph](/images/PC4.png)
 
-### Mobile (iPhone 6S Plus Portrait)
+### Mobile (iPhone 6 Portrait)
 
 ![graph](/images/mobile.png)
 
