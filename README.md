@@ -35,7 +35,7 @@ Just open index.html file from repository with your browser.
 
 ### Desktop (1920p)
 
-![graph](/images/pc.png)
+![graph](/images/PC.png)
 ![graph](/images/PC4.png)
 
 ### Mobile (iPhone 6 Portrait)
