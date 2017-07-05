@@ -620,8 +620,10 @@ input[name^=reg] {
   border-right-style: none;
   border-left-style: none;
   border-top-style: none;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid #ddd;
   max-width: 70%; }
+  input[name^=reg]:active, input[name^=reg]:focus {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5); }
 
 textarea {
   height: 86px !important;

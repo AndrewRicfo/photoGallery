@@ -594,8 +594,10 @@ input
     border-right-style: none
     border-left-style: none
     border-top-style: none
-    border-bottom: 1px solid $mblack
+    border-bottom: 1px solid $hover-color
     max-width: 70%
+    &:active, &:focus
+      border-bottom: 1px solid $mblack
 
 textarea
   @extend %inpTextarea
@@ -626,7 +628,7 @@ textarea
   margin: 10px 0 0
   float: right
   font-size: inherit
-
+  
 .clearfix 
   &:after 
     content: ""

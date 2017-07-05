@@ -294,7 +294,7 @@ function changePage(page, flag, ma)
 				newImg.style.margin="7% auto 0"
 		}
 		modal.style.display = "block";
-		if(!$(this).hasClass('upload')){
+		if(!$(this).hasClass('upload') && (this.src.substring(0,4) != 'blob')){
 			var src = this.src.split('.jpg')
 			src = src[0].split('/')
 			var imageNumber = parseInt(src[src.length-1].split('-')[1])
@@ -314,11 +314,11 @@ function changePage(page, flag, ma)
 		$('body').css("overflow", "hidden")
 		$('.nav').css("display", "none")
 
-		modalImg.onclick = function() { 
-			modal.style.display = "none";
+		$('.modal-content').on('click', function() { 
+			$('.modal').css('display', 'none')
 			$('body').css("overflow", "auto")
 			$('.nav').css("display", "block")
-		}
+		})
 
 		span.onclick = function() { 
 			modal.style.display = "none";
@@ -337,22 +337,32 @@ function changePage(page, flag, ma)
 		$('.modal-left').css('display', 'none')
 		$('.modal-right').css('display', 'none')
 	})
+
+	$('.modal-content').on('click', function() { 
+		$('.modal').css('display', 'none')
+		$('body').css("overflow", "auto")
+		$('.nav').css("display", "block")
+	})
+
 	$('.close').on('click', function(){
 		$('.modal-left').css('display', 'block')
 		$('.modal-right').css('display', 'block')
 	})
 	l.onclick = function(){
-		var src = modalImg.src.split(".jpg")
-		src = src[0].split("/")
-		var imageNumber = parseInt(src[src.length-1])
-		imageNumber-=1
+		var src = modalImg.src
+		if(src.substring(0,4) != 'blob'){
+			src = modalImg.src.split(".jpg")
+			src = src[0].split("/")
+			var imageNumber = parseInt(src[src.length-1])
+			imageNumber-=1
+		}
 		//loop images only inside of one page
 		if(imageNumber==(page-1)*records_per_page && n==records_per_page)
 			imageNumber = page*records_per_page
 		if(imageNumber==(page-1)*records_per_page && n!=records_per_page)
 			imageNumber = (page-1)*records_per_page + n
 		src[src.length-1] = imageNumber + ".jpg"
-		var newSrc = src.join("/")	
+		var newSrc = sourcesFull[imageNumber-1]	
 		var modalW, modalH
 		var ratio = heights[imageNumber-1]/widths[imageNumber-1]
 
@@ -392,73 +402,76 @@ function changePage(page, flag, ma)
 	}
 
 	r.onclick = function(){
-		var src = modalImg.src.split(".jpg")
-		src = src[0].split("/")
-		var imageNumber = parseInt(src[src.length-1])
-		imageNumber+=1
-		//loop images only inside of one page
-		if(imageNumber==page*records_per_page+1 && n==records_per_page)
-			imageNumber = (page-1)*records_per_page+1
-		if(imageNumber==(page-1)*records_per_page+n+1 && n!=records_per_page)
-			imageNumber = (page-1)*records_per_page+1
-		src[src.length-1] = imageNumber + ".jpg"
-		var newSrc = src.join("/")	
+		var src = modalImg.src
+		if(src.substring(0,4) != 'blob'){
+			src = modalImg.src.split(".jpg")
+			src = src[0].split("/")
+			var imageNumber = parseInt(src[src.length-1])
+			imageNumber+=1
+		}
+			//loop images only inside of one page
+			if(imageNumber==page*records_per_page+1 && n==records_per_page)
+				imageNumber = (page-1)*records_per_page+1
+			if(imageNumber==(page-1)*records_per_page+n+1 && n!=records_per_page)
+				imageNumber = (page-1)*records_per_page+1
+			src[src.length-1] = imageNumber + ".jpg"
+			var newSrc = sourcesFull[imageNumber-1]
 
-		var modalW, modalH
-		var ratio = heights[imageNumber-1]/widths[imageNumber-1]
-		
-		if(ratio<=1){
-			if(x>1200)
-				modalW = x*0.55
-			if(x>=800 && x<=1200)
-				modalW =  x*0.7
-			if(x<800)
-				modalW = x*0.8
-			modalH = modalW*ratio
-		}else{
-			modalH = y
-			modalW = modalH/ratio
-			if(modalW > x){
-				modalW = x*0.85
+			var modalW, modalH
+			var ratio = heights[imageNumber-1]/widths[imageNumber-1]
+
+			if(ratio<=1){
+				if(x>1200)
+					modalW = x*0.55
+				if(x>=800 && x<=1200)
+					modalW =  x*0.7
+				if(x<800)
+					modalW = x*0.8
 				modalH = modalW*ratio
+			}else{
+				modalH = y
+				modalW = modalH/ratio
+				if(modalW > x){
+					modalW = x*0.85
+					modalH = modalW*ratio
+				}
 			}
-		}
-		var newImg = new Image(modalW, modalH)
+			var newImg = new Image(modalW, modalH)
 
-		newImg.style.width = modalW + "px"
-		newImg.style.height = modalH + "px"
-		if(ratio>1){
-			if(modalW == x*0.85)
-				newImg.style.margin="25% auto"
-			else
-				newImg.style.margin="0 auto"
-		}
-		else{
-			if(x < 1000)
-				newImg.style.margin="50% auto"
-			else
-				newImg.style.margin="7% auto 0"
-		}
-		modalImg.src = newSrc
-		newImg.src = newSrc	
-		newImg.className += "modal-content"
-		$(".modal-content").first().replaceWith(newImg)
-	}	
-})();
+			newImg.style.width = modalW + "px"
+			newImg.style.height = modalH + "px"
+			if(ratio>1){
+				if(modalW == x*0.85)
+					newImg.style.margin="25% auto"
+				else
+					newImg.style.margin="0 auto"
+			}
+			else{
+				if(x < 1000)
+					newImg.style.margin="50% auto"
+				else
+					newImg.style.margin="7% auto 0"
+			}
+			modalImg.src = newSrc
+			newImg.src = newSrc	
+			newImg.className += "modal-content"
+			$(".modal-content").first().replaceWith(newImg)
+		}	
+	})();
 
-page_span.innerHTML = page + "/" + num;
+	page_span.innerHTML = page + "/" + num;
 
-if (page == 1) {
-	btn_prev.style.visibility = "hidden";
-} else {
-	btn_prev.style.visibility = "visible";
-}
+	if (page == 1) {
+		btn_prev.style.visibility = "hidden";
+	} else {
+		btn_prev.style.visibility = "visible";
+	}
 
-if (page == num) {
-	btn_next.style.visibility = "hidden";
-} else {
-	btn_next.style.visibility = "visible";
-}
+	if (page == num) {
+		btn_next.style.visibility = "hidden";
+	} else {
+		btn_next.style.visibility = "visible";
+	}
 } //end of changePage
 
 //search
