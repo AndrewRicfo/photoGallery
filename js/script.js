@@ -10,7 +10,7 @@
 
 // preloader till content is loaded
 $(window).on('load', function() {
-	$(".preloader").fadeOut("slow");;
+	$(".preloader").fadeOut("slow");
 });
 
 $('.dropdown-content').on('mouseenter', function(){
