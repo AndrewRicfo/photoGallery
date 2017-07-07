@@ -16,7 +16,7 @@ $('.dropdown-content').on('mouseleave', function(){
 // uploading images
 //ajax call for .json file at github
 var imgJSON = $.ajax({
-	url: 'https://rawgit.com/AndrewRicfo/photoGallery/master/js/jason.json',
+	url: 'https://rawgit.com/AndrewRicfo/photoGallery/master/js/images.json',
 	data: {},
 	type: 'GET',
 	crossDomain: true,
