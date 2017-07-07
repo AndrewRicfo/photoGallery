@@ -1,11 +1,3 @@
-// when click modal-right/left, use .entries() to get imageNumber
-
-// var arr = ['a', 'b', 'c'].entries()
-// arr.next().value     *n times
-//---------
-// index = srcFull.indexOf(src)
-// then get value of this index on .entries
-
 "use strict";
 
 // preloader till content is loaded
