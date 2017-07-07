@@ -1,105 +1,6 @@
-$blue: #70aed2
-$white: #fff
-$black: #000
-$hover-color: #ddd
-$lgray: rgba(255,255,255,0.3)
-$lblack: rgba(0,0,0,0.2)
-$mblack: rgba(0,0,0,0.5)
-$sblack: rgba(0,0,0,0.7)
-$darkgray: rgba(36, 36, 36, 0.9) 
-$footer: #252525
-$facebook: #3b5998
-$twitter: #00aced
-$gplus: #dd4b39
-$linkedin: #007bb6
-
-
-=navModal
-  display: none
-  position: absolute
-  background-color: #f9f9f9
-  min-width: 160px
-  max-width: 20%
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2)
-  z-index: 1
-
-=transform($translate)
-  -moz-transform: $translate
-  -ms-transform: $translate
-  -webkit-transform: $translate
-  transform: $translate
-
-=animation($param)
-  -moz-animation: $param
-  -webkit-animation: $param
-  animation: $param
-
-=fade($param, $time)
-  -webkit-animation-name: $param
-  -webkit-animation-duration: $time
-  -moz-animation-name: $param
-  -moz-animation-duration: $time
-  animation-name: $param
-  animation-duration: $time
-
-=keyframesFade($param, $from, $to)
-  0%
-    #{$param}: $from
-  100%
-    #{$param}: $to
-
-=columns($count)
-  -moz-column-count: $count
-  -webkit-column-count: $count
-  column-count: $count
-
-
-/*reset css*/
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video
-  margin: 0
-  padding: 0
-  border: 0
-  font-size: 100%
-  font: inherit
-  vertical-align: baseline
-  box-sizing: border-box
-
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section
-  display: block
-
-body
-  line-height: 1
-
-ol, ul
-  list-style: none
-
-blockquote, q
-  quotes: none
-
-blockquote:before, blockquote:after,
-q:before, q:after
-  content: ''
-  content: none
-
-table
-  border-collapse: collapse
-  border-spacing: 0
-/*end of css rest*/
-
+@import 'reset'
+@import 'variables'
+@import 'mixins'
 
 .preloader
   position: fixed
@@ -565,23 +466,6 @@ h6
   white-space: -o-pre-wrap
   white-space: -pre-wrap          
   word-wrap: break-word
-
-%inpTextarea
-  @media all and (max-width: 1600px)
-    width: 400px
-  @media all and (max-width: 1400px)
-    width: 350px
-  @media all and (max-width: 1200px)
-    width: 275px
-  @media all and (max-width: 1000px)
-    width: 250px
-  @media all and (max-width: 800px)
-    width: 70px
-  height: 20px
-  padding: 12px
-  margin: 8px
-  width: 450px
-  outline: 0
 
 input
   @extend %inpTextarea

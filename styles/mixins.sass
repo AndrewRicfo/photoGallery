@@ -1,0 +1,55 @@
+=navModal
+  display: none
+  position: absolute
+  background-color: #f9f9f9
+  min-width: 160px
+  max-width: 20%
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2)
+  z-index: 1
+
+=transform($translate)
+  -moz-transform: $translate
+  -ms-transform: $translate
+  -webkit-transform: $translate
+  transform: $translate
+
+=animation($param)
+  -moz-animation: $param
+  -webkit-animation: $param
+  animation: $param
+
+=fade($param, $time)
+  -webkit-animation-name: $param
+  -webkit-animation-duration: $time
+  -moz-animation-name: $param
+  -moz-animation-duration: $time
+  animation-name: $param
+  animation-duration: $time
+
+=keyframesFade($param, $from, $to)
+  0%
+    #{$param}: $from
+  100%
+    #{$param}: $to
+
+=columns($count)
+  -moz-column-count: $count
+  -webkit-column-count: $count
+  column-count: $count
+
+%inpTextarea
+  @media all and (max-width: 1600px)
+    width: 400px
+  @media all and (max-width: 1400px)
+    width: 350px
+  @media all and (max-width: 1200px)
+    width: 275px
+  @media all and (max-width: 1000px)
+    width: 250px
+  @media all and (max-width: 800px)
+    width: 70px
+  height: 20px
+  padding: 12px
+  margin: 8px
+  width: 450px
+  outline: 0
