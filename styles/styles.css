@@ -187,6 +187,7 @@ input, textarea {
   height: 1.3vw;
   width: 0;
   padding: 0;
+  background-color: #fff;
   margin-top: 10px; }
   @media all and (max-width: 1200px) {
     .nav-divide {
