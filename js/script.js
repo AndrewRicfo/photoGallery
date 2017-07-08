@@ -251,75 +251,73 @@ function changePage(page, flag, ma)
 		if(flag==2)
 			ratio = heights[ma[i]]/widths[ma[i]]
 
-	// calculating aspect ratio and w/h for modal image
-	if(ratio<=1){
-		if(x>1200)
-			modalW = x*0.6
-		if(x>=800 && x<=1200)
-			modalW =  x*0.7
-		if(x<800)
-			modalW = x*0.8
-		modalH = modalW*ratio
-	}else{
-		modalH = y
-		modalW = modalH/ratio
-		if(modalW > x){
-			modalW = x*0.85
+		// calculating aspect ratio and w/h for modal image
+		if(ratio<=1){
+			if(x>1200)
+				modalW = x*0.6
+			if(x>=800 && x<=1200)
+				modalW = x*0.7
+			if(x<800)
+				modalW = x*0.8
 			modalH = modalW*ratio
+		}else{
+			modalH = y
+			modalW = modalH/ratio
+			if(modalW > x){
+				modalW = x*0.85
+				modalH = modalW*ratio
+			}
+		}
 
+		img.onclick = function(){
+
+			let newImg = new Image(modalW, modalH)
+			if(ratio>1){
+				if(modalW == x*0.85)
+					newImg.style.margin="25% auto"
+				else
+					newImg.style.margin="0 auto"
+			}
+			else{
+				if(x < 1000)
+					newImg.style.margin="50% auto"
+				else
+					newImg.style.margin="7% auto 0"
+			}
+			modal.style.display = "block";
+			if(!$(this).hasClass('upload') && (this.src.substring(0,4) != 'blob')){
+				var src = this.src.split('.jpg')
+				src = src[0].split('/')
+				var imageNumber = parseInt(src[src.length-1].split('-')[1])
+				src[src.length-2] = "full"
+				src[src.length-1] = imageNumber + ".jpg"
+				var newSrc = src.join("/")
+			}
+			else{
+				newSrc = imgJSON[(page-1)*records_per_page+i].srcFull
+			}
+			newImg.src = newSrc
+			newImg.className += "modal-content"
+			$(".modal-content").first().replaceWith(newImg)
+			modalImg.src = newSrc
+
+			$('body').css("overflow", "hidden")
+			$('.nav').css("display", "none")
+
+			$('.modal-content').on('click', function() { 
+				$('.modal').css('display', 'none')
+				$('body').css("overflow", "auto")
+				$('.nav').css("display", "block")
+			})
+
+			span.onclick = function() { 
+				modal.style.display = "none";
+				$('body').css("overflow", "auto")
+				$('.nav').css("display", "block")
+
+			}
 		}
 	}
-
-	img.onclick = function(){
-		
-		let newImg = new Image(modalW, modalH)
-		if(ratio>1){
-			if(modalW == x*0.85)
-				newImg.style.margin="25% auto"
-			else
-				newImg.style.margin="0 auto"
-		}
-		else{
-			if(x < 1000)
-				newImg.style.margin="50% auto"
-			else
-				newImg.style.margin="7% auto 0"
-		}
-		modal.style.display = "block";
-		if(!$(this).hasClass('upload') && (this.src.substring(0,4) != 'blob')){
-			var src = this.src.split('.jpg')
-			src = src[0].split('/')
-			var imageNumber = parseInt(src[src.length-1].split('-')[1])
-			src[src.length-2] = "full"
-			src[src.length-1] = imageNumber + ".jpg"
-			var newSrc = src.join("/")
-		}
-		else{
-			newSrc = imgJSON[(page-1)*records_per_page+i].srcFull
-		}
-		newImg.src = newSrc
-
-		newImg.className += "modal-content"
-		$(".modal-content").first().replaceWith(newImg)
-		modalImg.src = newSrc
-
-		$('body').css("overflow", "hidden")
-		$('.nav').css("display", "none")
-
-		$('.modal-content').on('click', function() { 
-			$('.modal').css('display', 'none')
-			$('body').css("overflow", "auto")
-			$('.nav').css("display", "block")
-		})
-
-		span.onclick = function() { 
-			modal.style.display = "none";
-			$('body').css("overflow", "auto")
-			$('.nav').css("display", "block")
-
-		}
-	}
-}
 
 //change modal on right/left button clicks
 (function changeModal(){
