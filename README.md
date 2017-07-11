@@ -28,7 +28,8 @@ Just open index.html file from repository with your browser.
 
 * HTML
 * Javascript
-* jQuery
+* [jQuery](https://jquery.com) - js library
+* [Gulp](http://gulpjs.com) - task runner
 * [SaSS](http://sass-lang.com/) - CSS preprocessor
 
 ## Results
